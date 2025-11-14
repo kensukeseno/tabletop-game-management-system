@@ -5,92 +5,51 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace TabletopGameManagementSystem.Models
 {
     internal class Game
     {
-        public string ID { get; }
-        public string Title { get; }
-        public string Desc { get; }
-        public double Rating { get; }
-        public int NumVoters { get; }
-        public int MinPlayers { get; }
-        public int MaxPlayers { get; }
-        public int PlayLength { get; }
-        public Genre Genre { get; }
-        public Difficulty Difficulty { get; }
-        public int AgeSuitability { get; }
+        [JsonPropertyName("id")]
+        public int ID { get; set; }
+        [JsonPropertyName("name")]
+        public string Name { get; set; }
+        [JsonPropertyName("description")]
+        public string Desc { get; set; }
+        [JsonPropertyName("rank")]
+        public int Rank { get; set; }
+        [JsonPropertyName("minplayers")]
+        public int MinPlayers { get; set; }
+        [JsonPropertyName("maxplayers")]
+        public int MaxPlayers { get; set; }
+        [JsonPropertyName("playingtime")]
+        public int PlayingTime { get; set; }
+        [JsonPropertyName("boardgamecategory")]
+        public List<string> Categories { get; set; }
+        [JsonPropertyName("age")]
+        public int AgeSuitability { get; set; }
+        [JsonPropertyName("lastplayed")]
         public DateTime? LastPlayed { get; set; }
-        public bool isOwned { get; set; }
+        [JsonPropertyName("iswishlisted")]
+        public bool IsWishlisted { get; set; }
+        [JsonPropertyName("isowned")]
+        public bool IsOwned { get; set; }
+        [JsonPropertyName("isfavorite")]
         public bool IsFavorite { get; set; }
-        public Dictionary<string, string> CustomAttributes { get; set; }
+        [JsonPropertyName("useradded")]
+        public bool UserAdded { get; set; }
 
-        public Game(string id, string title, string desc, double rating, int numVoters, int minPlayer, int maxPlayers, int playLength, Genre genre, Difficulty difficulty, int ageSuitability, bool isOwned = false, bool IsFavorite = false)
+        public Game(string name, string desc, int minPlayers, int maxPlayers, int playingTime, List<string> categories, int ageSuitability)
         {
-            ID = id;
-            Title = title;
+            Name = name;
             Desc = desc;
-            Rating = rating;
-            NumVoters = numVoters;
-            MinPlayers = minPlayer;
+            MinPlayers = minPlayers;
             MaxPlayers = maxPlayers;
-            PlayLength = playLength;
-            Genre = genre;
-            Difficulty = difficulty;
+            PlayingTime = playingTime;
+            Categories = categories;
             AgeSuitability = ageSuitability;
+            UserAdded = true;
         }
-
-        public void AddTag(string tag)
-        {
-
-        }
-
-        public void RemoveTag(string tag)
-        {
-
-        }
-
-        public void ToggleFavorite() 
-        {
-            IsFavorite = !IsFavorite;
-        }
-
-        public void UpdateAttribute(string key, string value)
-        {
-
-        }
-        
-
-
-    }
-
-    public enum Difficulty
-    {
-        unknown,
-        Easy,
-        Medium,
-        Hard
-    }
-
-    public enum Genre
-    {
-        unknown,
-        Strategy,
-        PartyGames,
-        Cooperative,
-        DeckBuilding,
-        AbstractStrategy,
-        WorkerPlacement,
-        AreaControl_AreaInfluence,
-        ResourceManagement,
-        TileLaying,
-        RolePlaying,
-        Dexterity,
-        Thematic,
-        Deduction,
-        Auction_Bidding,
-        Trivia_QuizGames,
-        LegacyGames
     }
 }
