@@ -23,8 +23,18 @@
     </EmbeddedResource>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-  </ItemGroup>
+	  <ItemGroup>
+		  <Folder Include="Helpers\" />
 
-</Project>
+		  <None Update="Data\boardgames.json">
+			  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		  </None>
+		  <None Update="Data\categories.json">
+			  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		  </None>
+		  <None Update="Data\collections.json">
+			  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		  </None>
+	  </ItemGroup>
+	
+  </Project>
