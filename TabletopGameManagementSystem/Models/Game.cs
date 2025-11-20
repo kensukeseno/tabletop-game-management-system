@@ -8,38 +8,23 @@ using System.Threading.Tasks;
 
 namespace TabletopGameManagementSystem.Models
 {
-    internal class Game
+    internal class Game(string id, string title, string desc, double rating, int numVoters, int minPlayer, int maxPlayers, int playLength, Genre genre, Difficulty difficulty, int ageSuitability, bool isOwned = false, bool IsFavorite = false)
     {
-        public string ID { get; }
-        public string Title { get; }
-        public string Desc { get; }
-        public double Rating { get; }
-        public int NumVoters { get; }
-        public int MinPlayers { get; }
-        public int MaxPlayers { get; }
-        public int PlayLength { get; }
-        public Genre Genre { get; }
-        public Difficulty Difficulty { get; }
-        public int AgeSuitability { get; }
+        public string ID { get; } = id;
+        public string Title { get; } = title;
+        public string Desc { get; } = desc;
+        public double Rating { get; } = rating;
+        public int NumVoters { get; } = numVoters;
+        public int MinPlayers { get; } = minPlayer;
+        public int MaxPlayers { get; } = maxPlayers;
+        public int PlayLength { get; } = playLength;
+        public Genre Genre { get; } = genre;
+        public Difficulty Difficulty { get; } = difficulty;
+        public int AgeSuitability { get; } = ageSuitability;
         public DateTime? LastPlayed { get; set; }
         public bool isOwned { get; set; }
         public bool IsFavorite { get; set; }
-        public Dictionary<string, string> CustomAttributes { get; set; }
-
-        public Game(string id, string title, string desc, double rating, int numVoters, int minPlayer, int maxPlayers, int playLength, Genre genre, Difficulty difficulty, int ageSuitability, bool isOwned = false, bool IsFavorite = false)
-        {
-            ID = id;
-            Title = title;
-            Desc = desc;
-            Rating = rating;
-            NumVoters = numVoters;
-            MinPlayers = minPlayer;
-            MaxPlayers = maxPlayers;
-            PlayLength = playLength;
-            Genre = genre;
-            Difficulty = difficulty;
-            AgeSuitability = ageSuitability;
-        }
+        public Dictionary<string, string>? CustomAttributes { get; set; }
 
         public void AddTag(string tag)
         {

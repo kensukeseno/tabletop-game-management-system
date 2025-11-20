@@ -14,10 +14,12 @@ namespace TabletopGameManagementSystem
 
         private void startBtn_Click(object sender, EventArgs e)
         {
-            // app form open
             Form2 form2 = new Form2();
 
+            form2.FormClosed += (s, args) => this.Close();
+
             form2.Show();
+            this.Hide();   
         }
     }
 }

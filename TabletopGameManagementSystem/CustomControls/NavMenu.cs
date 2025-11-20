@@ -7,27 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using TabletopGameManagementSystem.CustomControls; 
 
-namespace TabletopGameManagementSystem
+namespace TabletopGameManagementSystem.CustomControls
 {
-    public partial class Form2 : Form
+    public partial class NavMenu : UserControl
     {
-        public Form2()
+        public NavMenu()
         {
             InitializeComponent();
-
         }
-        private void Form2_Load(object sender, EventArgs e)
+
+        private void NavMenu_Load(object sender, EventArgs e)
         {
-           
+
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        private void button8_Click(object sender, EventArgs e)
         {
 
         }
     }
-
-
 }
