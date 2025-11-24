@@ -1,6 +1,6 @@
 ﻿namespace TabletopGameManagementSystem.CustomControls
 {
-    partial class AddGamesMenu
+    partial class myShelfMenu
     {
         /// <summary> 
         /// Required designer variable.
@@ -41,17 +41,16 @@
             // 
             tableLayoutPanel1.ColumnCount = 1;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(button1, 0, 1);
             tableLayoutPanel1.Controls.Add(bodyLayoutPanel, 0, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Controls.Add(button1, 0, 1);
+            tableLayoutPanel1.Location = new Point(8, 8);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 82.2580643F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 17.7419357F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Size = new Size(764, 434);
-            tableLayoutPanel1.TabIndex = 0;
+            tableLayoutPanel1.TabIndex = 1;
             // 
             // bodyLayoutPanel
             // 
@@ -98,15 +97,15 @@
             button1.FlatStyle = FlatStyle.Flat;
             button1.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button1.ForeColor = Color.Black;
-            button1.Location = new Point(575, 375);
-            button1.Margin = new Padding(0, 12, 25, 15);
+            button1.Location = new Point(545, 375);
+            button1.Margin = new Padding(0, 12, 55, 15);
             button1.Name = "button1";
             button1.Size = new Size(164, 37);
-            button1.TabIndex = 13;
-            button1.Text = "Refresh";
+            button1.TabIndex = 14;
+            button1.Text = "Add Game";
             button1.UseVisualStyleBackColor = false;
             // 
-            // AddGamesMenu
+            // myShelfMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -115,7 +114,7 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(tableLayoutPanel1);
             DoubleBuffered = true;
-            Name = "AddGamesMenu";
+            Name = "myShelfMenu";
             Size = new Size(764, 434);
             tableLayoutPanel1.ResumeLayout(false);
             bodyLayoutPanel.ResumeLayout(false);
@@ -123,7 +122,6 @@
         }
 
         #endregion
-
         private TableLayoutPanel tableLayoutPanel1;
         private TableLayoutPanel bodyLayoutPanel;
         private VScrollBar vScrollBar1;

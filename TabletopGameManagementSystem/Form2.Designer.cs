@@ -114,8 +114,9 @@
             BackColor = Color.Black;
             ClientSize = new Size(1093, 614);
             Controls.Add(form2Panel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form2";
-            Text = "TableTop Mate";
+            Text = "TurnTable";
             WindowState = FormWindowState.Maximized;
             Load += Form2_Load;
             form2Panel.ResumeLayout(false);

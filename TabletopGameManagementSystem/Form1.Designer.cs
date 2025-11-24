@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             pictureBox2 = new PictureBox();
             startBtn = new Button();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -89,9 +90,10 @@
             BackColor = Color.Black;
             ClientSize = new Size(800, 640);
             Controls.Add(tableLayoutPanel1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "TurnTable Start";
+            Text = "TurnTable";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             tableLayoutPanel1.ResumeLayout(false);

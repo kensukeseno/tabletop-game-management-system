@@ -1,6 +1,6 @@
 ﻿namespace TabletopGameManagementSystem.CustomControls.Views
 {
-    partial class AddGamesView
+    partial class AllGamesView
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddGamesView));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllGamesView));
             collections_layoutPanel = new TableLayoutPanel();
             filterMenu1 = new FilterMenu();
             addGamesMenu1 = new AddGamesMenu();
@@ -53,23 +53,25 @@
             // 
             // filterMenu1
             // 
+            filterMenu1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             filterMenu1.BackColor = Color.Transparent;
             filterMenu1.BackgroundImage = (Image)resources.GetObject("filterMenu1.BackgroundImage");
             filterMenu1.BackgroundImageLayout = ImageLayout.Stretch;
             filterMenu1.Location = new Point(711, 2);
             filterMenu1.Margin = new Padding(2);
             filterMenu1.Name = "filterMenu1";
-            filterMenu1.Size = new Size(279, 443);
+            filterMenu1.Size = new Size(329, 484);
             filterMenu1.TabIndex = 0;
             // 
             // addGamesMenu1
             // 
+            addGamesMenu1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             addGamesMenu1.BackColor = Color.Transparent;
             addGamesMenu1.BackgroundImage = (Image)resources.GetObject("addGamesMenu1.BackgroundImage");
             addGamesMenu1.BackgroundImageLayout = ImageLayout.Stretch;
             addGamesMenu1.Location = new Point(3, 3);
             addGamesMenu1.Name = "addGamesMenu1";
-            addGamesMenu1.Size = new Size(703, 434);
+            addGamesMenu1.Size = new Size(703, 482);
             addGamesMenu1.TabIndex = 1;
             // 
             // AddGamesView
