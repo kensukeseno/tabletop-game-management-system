@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyShelfView));
             myShelf_layoutPanel = new TableLayoutPanel();
-            gamesMenu1 = new GamesMenu();
             filterMenu1 = new FilterMenu();
+            myShelfMenu1 = new myShelfMenu();
             myShelf_layoutPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -41,28 +41,17 @@
             myShelf_layoutPanel.ColumnCount = 2;
             myShelf_layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 68.04223F));
             myShelf_layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.9577732F));
-            myShelf_layoutPanel.Controls.Add(gamesMenu1, 0, 0);
             myShelf_layoutPanel.Controls.Add(filterMenu1, 1, 0);
+            myShelf_layoutPanel.Controls.Add(myShelfMenu1, 0, 0);
             myShelf_layoutPanel.Dock = DockStyle.Fill;
             myShelf_layoutPanel.Location = new Point(0, 0);
             myShelf_layoutPanel.Name = "myShelf_layoutPanel";
             myShelf_layoutPanel.RowCount = 1;
             myShelf_layoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 28.57143F));
+            myShelf_layoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             myShelf_layoutPanel.Size = new Size(1042, 488);
             myShelf_layoutPanel.TabIndex = 3;
             myShelf_layoutPanel.Paint += myShelf_layoutPanel_Paint;
-            // 
-            // gamesMenu1
-            // 
-            gamesMenu1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            gamesMenu1.BackColor = Color.Transparent;
-            gamesMenu1.BackgroundImage = (Image)resources.GetObject("gamesMenu1.BackgroundImage");
-            gamesMenu1.BackgroundImageLayout = ImageLayout.Stretch;
-            gamesMenu1.Location = new Point(2, 2);
-            gamesMenu1.Margin = new Padding(2);
-            gamesMenu1.Name = "gamesMenu1";
-            gamesMenu1.Size = new Size(705, 484);
-            gamesMenu1.TabIndex = 0;
             // 
             // filterMenu1
             // 
@@ -75,6 +64,17 @@
             filterMenu1.Name = "filterMenu1";
             filterMenu1.Size = new Size(329, 484);
             filterMenu1.TabIndex = 1;
+            // 
+            // myShelfMenu1
+            // 
+            myShelfMenu1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            myShelfMenu1.BackColor = Color.Transparent;
+            myShelfMenu1.BackgroundImage = (Image)resources.GetObject("myShelfMenu1.BackgroundImage");
+            myShelfMenu1.BackgroundImageLayout = ImageLayout.Stretch;
+            myShelfMenu1.Location = new Point(3, 3);
+            myShelfMenu1.Name = "myShelfMenu1";
+            myShelfMenu1.Size = new Size(703, 482);
+            myShelfMenu1.TabIndex = 2;
             // 
             // MyShelfView
             // 
@@ -91,7 +91,7 @@
         #endregion
 
         private TableLayoutPanel myShelf_layoutPanel;
-        private GamesMenu gamesMenu1;
         private FilterMenu filterMenu1;
+        private myShelfMenu myShelfMenu1;
     }
 }

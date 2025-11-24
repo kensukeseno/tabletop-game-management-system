@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TabletopGameManagementSystem.CustomControls.Views
+namespace TabletopGameManagementSystem.CustomControls
 {
-    public partial class AddGamesView : UserControl
+    public partial class myShelfMenu : UserControl
     {
-        public AddGamesView()
+        public myShelfMenu()
         {
             InitializeComponent();
         }
