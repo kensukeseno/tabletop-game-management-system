@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllGamesView));
             collections_layoutPanel = new TableLayoutPanel();
-            filterMenu1 = new FilterMenu();
             gameCardContainer1 = new GameCardContainer();
+            filterMenu1 = new FilterMenu();
             collections_layoutPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -52,6 +52,16 @@
             collections_layoutPanel.Size = new Size(1191, 651);
             collections_layoutPanel.TabIndex = 5;
             // 
+            // gameCardContainer1
+            // 
+            gameCardContainer1.AutoScroll = true;
+            gameCardContainer1.BackColor = Color.Transparent;
+            gameCardContainer1.Location = new Point(2, 3);
+            gameCardContainer1.Margin = new Padding(2, 3, 2, 3);
+            gameCardContainer1.Name = "gameCardContainer1";
+            gameCardContainer1.Size = new Size(806, 645);
+            gameCardContainer1.TabIndex = 1;
+            // 
             // filterMenu1
             // 
             filterMenu1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
@@ -63,16 +73,6 @@
             filterMenu1.Name = "filterMenu1";
             filterMenu1.Size = new Size(377, 645);
             filterMenu1.TabIndex = 0;
-            // 
-            // gameCardContainer1
-            // 
-            gameCardContainer1.AutoScroll = true;
-            gameCardContainer1.BackColor = Color.Transparent;
-            gameCardContainer1.Location = new Point(2, 3);
-            gameCardContainer1.Margin = new Padding(2, 3, 2, 3);
-            gameCardContainer1.Name = "gameCardContainer1";
-            gameCardContainer1.Size = new Size(806, 645);
-            gameCardContainer1.TabIndex = 1;
             // 
             // AllGamesView
             // 
@@ -90,7 +90,7 @@
         #endregion
 
         private TableLayoutPanel collections_layoutPanel;
-        private FilterMenu filterMenu1;
         private GameCardContainer gameCardContainer1;
+        private FilterMenu filterMenu1;
     }
 }

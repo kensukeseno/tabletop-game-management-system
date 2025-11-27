@@ -30,10 +30,10 @@
         {
             gameCard_panel = new TableLayoutPanel();
             gamedetails_panel = new TableLayoutPanel();
-            lblGameTitle = new Label();
             innerGamedetailsPanel = new TableLayoutPanel();
             label3 = new Label();
             label2 = new Label();
+            lblGameTitle = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
             cbWishlist = new CheckBox();
             cbMyShelf = new CheckBox();
@@ -62,8 +62,8 @@
             // 
             gamedetails_panel.ColumnCount = 1;
             gamedetails_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            gamedetails_panel.Controls.Add(lblGameTitle, 0, 0);
             gamedetails_panel.Controls.Add(innerGamedetailsPanel, 0, 1);
+            gamedetails_panel.Controls.Add(lblGameTitle, 0, 0);
             gamedetails_panel.Dock = DockStyle.Fill;
             gamedetails_panel.Location = new Point(407, 29);
             gamedetails_panel.Margin = new Padding(3, 29, 3, 3);
@@ -76,18 +76,6 @@
             gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             gamedetails_panel.Size = new Size(398, 235);
             gamedetails_panel.TabIndex = 1;
-            // 
-            // lblGameTitle
-            // 
-            lblGameTitle.Anchor = AnchorStyles.None;
-            lblGameTitle.AutoSize = true;
-            lblGameTitle.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGameTitle.ForeColor = SystemColors.ActiveBorder;
-            lblGameTitle.Location = new Point(102, 8);
-            lblGameTitle.Name = "lblGameTitle";
-            lblGameTitle.Size = new Size(194, 34);
-            lblGameTitle.TabIndex = 0;
-            lblGameTitle.Text = "Game Title";
             // 
             // innerGamedetailsPanel
             // 
@@ -132,6 +120,20 @@
             label2.Size = new Size(99, 28);
             label2.TabIndex = 2;
             label2.Text = "Heading";
+            // 
+            // lblGameTitle
+            // 
+            lblGameTitle.Anchor = AnchorStyles.None;
+            lblGameTitle.AutoSize = true;
+            lblGameTitle.Font = new Font("Broadway", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblGameTitle.ForeColor = SystemColors.ActiveBorder;
+            lblGameTitle.Location = new Point(125, 12);
+            lblGameTitle.MaximumSize = new Size(500, 0);
+            lblGameTitle.Name = "lblGameTitle";
+            lblGameTitle.Size = new Size(148, 26);
+            lblGameTitle.TabIndex = 0;
+            lblGameTitle.Text = "Game Title";
+            lblGameTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
             // 

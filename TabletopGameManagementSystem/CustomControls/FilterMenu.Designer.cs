@@ -28,55 +28,49 @@
         /// </summary>
         private void InitializeComponent()
         {
-            filterLayoutPanel = new TableLayoutPanel();
-            apply_filters_btn = new Button();
+            label1 = new Label();
+            txtTitleFilter = new TextBox();
             button2 = new Button();
-            filter_text_box = new TextBox();
-            sample_radio_btn = new RadioButton();
-            filterLayoutPanel.SuspendLayout();
+            btnApply = new Button();
+            chkOwned = new CheckBox();
+            chkWishlist = new CheckBox();
+            chkFavorite = new CheckBox();
+            numMinPlayers = new NumericUpDown();
+            label2 = new Label();
+            label3 = new Label();
+            numMaxPlayers = new NumericUpDown();
+            label4 = new Label();
+            numPlayingTime = new NumericUpDown();
+            label5 = new Label();
+            numAge = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)numMinPlayers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numMaxPlayers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numPlayingTime).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numAge).BeginInit();
             SuspendLayout();
             // 
-            // filterLayoutPanel
+            // label1
             // 
-            filterLayoutPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            filterLayoutPanel.ColumnCount = 1;
-            filterLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            filterLayoutPanel.Controls.Add(apply_filters_btn, 0, 7);
-            filterLayoutPanel.Controls.Add(button2, 0, 0);
-            filterLayoutPanel.Controls.Add(filter_text_box, 0, 1);
-            filterLayoutPanel.Controls.Add(sample_radio_btn, 0, 2);
-            filterLayoutPanel.Location = new Point(0, 27);
-            filterLayoutPanel.Margin = new Padding(2);
-            filterLayoutPanel.Name = "filterLayoutPanel";
-            filterLayoutPanel.RowCount = 8;
-            filterLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
-            filterLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
-            filterLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
-            filterLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
-            filterLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
-            filterLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
-            filterLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
-            filterLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
-            filterLayoutPanel.Size = new Size(279, 389);
-            filterLayoutPanel.TabIndex = 2;
+            label1.AutoSize = true;
+            label1.Font = new Font("Broadway", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.LightGray;
+            label1.Location = new Point(28, 85);
+            label1.Name = "label1";
+            label1.Size = new Size(149, 20);
+            label1.TabIndex = 14;
+            label1.Text = "Name Contains";
             // 
-            // apply_filters_btn
+            // txtTitleFilter
             // 
-            apply_filters_btn.Anchor = AnchorStyles.Top;
-            apply_filters_btn.BackColor = Color.Transparent;
-            apply_filters_btn.BackgroundImage = Properties.Resources.grey_square;
-            apply_filters_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            apply_filters_btn.FlatAppearance.BorderSize = 0;
-            apply_filters_btn.FlatStyle = FlatStyle.Flat;
-            apply_filters_btn.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            apply_filters_btn.ForeColor = Color.Black;
-            apply_filters_btn.Location = new Point(57, 348);
-            apply_filters_btn.Margin = new Padding(0, 12, 0, 0);
-            apply_filters_btn.Name = "apply_filters_btn";
-            apply_filters_btn.Size = new Size(164, 37);
-            apply_filters_btn.TabIndex = 9;
-            apply_filters_btn.Text = "Apply";
-            apply_filters_btn.UseVisualStyleBackColor = false;
+            txtTitleFilter.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            txtTitleFilter.BackColor = SystemColors.ActiveBorder;
+            txtTitleFilter.BorderStyle = BorderStyle.None;
+            txtTitleFilter.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtTitleFilter.Location = new Point(28, 108);
+            txtTitleFilter.Margin = new Padding(23, 3, 23, 3);
+            txtTitleFilter.Name = "txtTitleFilter";
+            txtTitleFilter.Size = new Size(257, 34);
+            txtTitleFilter.TabIndex = 12;
             // 
             // button2
             // 
@@ -86,64 +80,196 @@
             button2.FlatStyle = FlatStyle.Flat;
             button2.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             button2.ForeColor = Color.FromArgb(12, 192, 223);
-            button2.Location = new Point(0, 12);
-            button2.Margin = new Padding(0, 12, 0, 0);
+            button2.Location = new Point(28, 31);
+            button2.Margin = new Padding(0, 16, 0, 0);
             button2.Name = "button2";
-            button2.Size = new Size(279, 36);
+            button2.Size = new Size(257, 54);
             button2.TabIndex = 3;
             button2.Text = "Filter";
             button2.UseVisualStyleBackColor = false;
             // 
-            // filter_text_box
+            // btnApply
             // 
-            filter_text_box.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            filter_text_box.BackColor = SystemColors.ActiveBorder;
-            filter_text_box.BorderStyle = BorderStyle.None;
-            filter_text_box.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            filter_text_box.Location = new Point(20, 50);
-            filter_text_box.Margin = new Padding(20, 2, 20, 2);
-            filter_text_box.Name = "filter_text_box";
-            filter_text_box.Size = new Size(239, 28);
-            filter_text_box.TabIndex = 12;
+            btnApply.Anchor = AnchorStyles.Top;
+            btnApply.BackColor = Color.Transparent;
+            btnApply.BackgroundImage = Properties.Resources.grey_square;
+            btnApply.BackgroundImageLayout = ImageLayout.Stretch;
+            btnApply.FlatAppearance.BorderSize = 0;
+            btnApply.FlatStyle = FlatStyle.Flat;
+            btnApply.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnApply.ForeColor = Color.Black;
+            btnApply.Location = new Point(58, 504);
+            btnApply.Margin = new Padding(0, 16, 0, 0);
+            btnApply.Name = "btnApply";
+            btnApply.Size = new Size(187, 40);
+            btnApply.TabIndex = 9;
+            btnApply.Text = "Apply";
+            btnApply.UseVisualStyleBackColor = false;
+            btnApply.Click += btnApply_Click;
             // 
-            // sample_radio_btn
+            // chkOwned
             // 
-            sample_radio_btn.Anchor = AnchorStyles.Top;
-            sample_radio_btn.AutoSize = true;
-            sample_radio_btn.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            sample_radio_btn.ForeColor = SystemColors.ActiveBorder;
-            sample_radio_btn.Location = new Point(74, 98);
-            sample_radio_btn.Margin = new Padding(2);
-            sample_radio_btn.Name = "sample_radio_btn";
-            sample_radio_btn.Size = new Size(130, 31);
-            sample_radio_btn.TabIndex = 13;
-            sample_radio_btn.TabStop = true;
-            sample_radio_btn.Text = "Sample";
-            sample_radio_btn.UseVisualStyleBackColor = true;
+            chkOwned.AutoSize = true;
+            chkOwned.Font = new Font("Broadway", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkOwned.ForeColor = Color.LightGray;
+            chkOwned.Location = new Point(28, 155);
+            chkOwned.Name = "chkOwned";
+            chkOwned.Size = new Size(95, 24);
+            chkOwned.TabIndex = 15;
+            chkOwned.Text = "Owned";
+            chkOwned.UseVisualStyleBackColor = true;
+            // 
+            // chkWishlist
+            // 
+            chkWishlist.AutoSize = true;
+            chkWishlist.Font = new Font("Broadway", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkWishlist.ForeColor = Color.LightGray;
+            chkWishlist.Location = new Point(28, 185);
+            chkWishlist.Name = "chkWishlist";
+            chkWishlist.Size = new Size(102, 24);
+            chkWishlist.TabIndex = 16;
+            chkWishlist.Text = "Wishlist";
+            chkWishlist.UseVisualStyleBackColor = true;
+            // 
+            // chkFavorite
+            // 
+            chkFavorite.AutoSize = true;
+            chkFavorite.Font = new Font("Broadway", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            chkFavorite.ForeColor = Color.LightGray;
+            chkFavorite.Location = new Point(28, 215);
+            chkFavorite.Name = "chkFavorite";
+            chkFavorite.Size = new Size(107, 24);
+            chkFavorite.TabIndex = 17;
+            chkFavorite.Text = "Favorite";
+            chkFavorite.UseVisualStyleBackColor = true;
+            // 
+            // numMinPlayers
+            // 
+            numMinPlayers.Location = new Point(182, 248);
+            numMinPlayers.Name = "numMinPlayers";
+            numMinPlayers.Size = new Size(55, 27);
+            numMinPlayers.TabIndex = 18;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Broadway", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.LightGray;
+            label2.Location = new Point(55, 250);
+            label2.Name = "label2";
+            label2.Size = new Size(122, 20);
+            label2.TabIndex = 19;
+            label2.Text = "Min. Players";
+            label2.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Broadway", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.LightGray;
+            label3.Location = new Point(50, 283);
+            label3.Name = "label3";
+            label3.Size = new Size(127, 20);
+            label3.TabIndex = 21;
+            label3.Text = "Max. Players";
+            label3.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // numMaxPlayers
+            // 
+            numMaxPlayers.Location = new Point(183, 281);
+            numMaxPlayers.Name = "numMaxPlayers";
+            numMaxPlayers.Size = new Size(55, 27);
+            numMaxPlayers.TabIndex = 20;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Broadway", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.LightGray;
+            label4.Location = new Point(46, 316);
+            label4.Name = "label4";
+            label4.Size = new Size(131, 20);
+            label4.TabIndex = 23;
+            label4.Text = "Playing Time";
+            label4.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // numPlayingTime
+            // 
+            numPlayingTime.Increment = new decimal(new int[] { 5, 0, 0, 0 });
+            numPlayingTime.Location = new Point(183, 314);
+            numPlayingTime.Name = "numPlayingTime";
+            numPlayingTime.Size = new Size(55, 27);
+            numPlayingTime.TabIndex = 22;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Broadway", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.LightGray;
+            label5.Location = new Point(71, 351);
+            label5.Name = "label5";
+            label5.Size = new Size(106, 20);
+            label5.TabIndex = 25;
+            label5.Text = "Player Age";
+            label5.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // numAge
+            // 
+            numAge.Location = new Point(183, 349);
+            numAge.Name = "numAge";
+            numAge.Size = new Size(55, 27);
+            numAge.TabIndex = 24;
             // 
             // FilterMenu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
             BackgroundImage = Properties.Resources.dk_grey_square;
             BackgroundImageLayout = ImageLayout.Stretch;
-            Controls.Add(filterLayoutPanel);
+            Controls.Add(label5);
+            Controls.Add(numAge);
+            Controls.Add(label4);
+            Controls.Add(numPlayingTime);
+            Controls.Add(label3);
+            Controls.Add(numMaxPlayers);
+            Controls.Add(label2);
+            Controls.Add(numMinPlayers);
+            Controls.Add(chkFavorite);
+            Controls.Add(chkWishlist);
+            Controls.Add(btnApply);
+            Controls.Add(chkOwned);
+            Controls.Add(button2);
+            Controls.Add(txtTitleFilter);
+            Controls.Add(label1);
             DoubleBuffered = true;
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "FilterMenu";
-            Size = new Size(279, 443);
-            filterLayoutPanel.ResumeLayout(false);
-            filterLayoutPanel.PerformLayout();
+            Size = new Size(319, 591);
+            ((System.ComponentModel.ISupportInitialize)numMinPlayers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numMaxPlayers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numPlayingTime).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numAge).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private TableLayoutPanel filterLayoutPanel;
-        private Button apply_filters_btn;
+        private Label label1;
+        private TextBox txtTitleFilter;
         private Button button2;
-        private TextBox filter_text_box;
-        private RadioButton sample_radio_btn;
+        private Button btnApply;
+        private CheckBox chkOwned;
+        private CheckBox chkWishlist;
+        private CheckBox chkFavorite;
+        private NumericUpDown numMinPlayers;
+        private Label label2;
+        private Label label3;
+        private NumericUpDown numMaxPlayers;
+        private Label label4;
+        private NumericUpDown numPlayingTime;
+        private Label label5;
+        private NumericUpDown numAge;
     }
 }
