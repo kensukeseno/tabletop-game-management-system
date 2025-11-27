@@ -25,8 +25,8 @@ namespace TabletopGameManagementSystem
         {
             InitializeComponent();
 
-            var _gameLibrary = new GameLibrary();       // intialize the game library service
-            var _games = _gameLibrary.GetAllGames();    // build a list of games from the service
+            _gameLibrary = new GameLibrary();       // intialize the game library service
+            _games = _gameLibrary.GetAllGames();    // build a list of games from the service
 
             Debug.WriteLine(_games.Count());
 
@@ -57,7 +57,7 @@ namespace TabletopGameManagementSystem
                     titleLabel.Text = "Wishlist";
                     break;
                 case "Games":
-                    view = new AllGamesView();
+                    view = new AllGamesView(_games);
                     titleLabel.Text = "All Games";
                     break;
                 case "Spin":

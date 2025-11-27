@@ -28,69 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameCardContainer));
-            gameMenuLayoutPanel = new TableLayoutPanel();
-            gameCardFull1 = new GameCardFull();
-            gameCardFull2 = new GameCardFull();
-            gameMenuLayoutPanel.SuspendLayout();
+            panel1 = new Panel();
             SuspendLayout();
             // 
-            // gameMenuLayoutPanel
+            // panel1
             // 
-            gameMenuLayoutPanel.ColumnCount = 1;
-            gameMenuLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            gameMenuLayoutPanel.Controls.Add(gameCardFull2, 0, 0);
-            gameMenuLayoutPanel.Controls.Add(gameCardFull1, 0, 1);
-            gameMenuLayoutPanel.Dock = DockStyle.Fill;
-            gameMenuLayoutPanel.Location = new Point(0, 0);
-            gameMenuLayoutPanel.Margin = new Padding(3, 2, 3, 2);
-            gameMenuLayoutPanel.Name = "gameMenuLayoutPanel";
-            gameMenuLayoutPanel.RowCount = 2;
-            gameMenuLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            gameMenuLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            gameMenuLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            gameMenuLayoutPanel.Size = new Size(712, 430);
-            gameMenuLayoutPanel.TabIndex = 0;
-            // 
-            // gameCardFull1
-            // 
-            gameCardFull1.BackColor = Color.Transparent;
-            gameCardFull1.BackgroundImage = (Image)resources.GetObject("gameCardFull1.BackgroundImage");
-            gameCardFull1.BackgroundImageLayout = ImageLayout.Stretch;
-            gameCardFull1.Location = new Point(3, 217);
-            gameCardFull1.Margin = new Padding(3, 2, 3, 2);
-            gameCardFull1.Name = "gameCardFull1";
-            gameCardFull1.Size = new Size(706, 211);
-            gameCardFull1.TabIndex = 1;
-            // 
-            // gameCardFull2
-            // 
-            gameCardFull2.BackColor = Color.Transparent;
-            gameCardFull2.BackgroundImage = (Image)resources.GetObject("gameCardFull2.BackgroundImage");
-            gameCardFull2.BackgroundImageLayout = ImageLayout.Stretch;
-            gameCardFull2.Location = new Point(3, 2);
-            gameCardFull2.Margin = new Padding(3, 2, 3, 2);
-            gameCardFull2.Name = "gameCardFull2";
-            gameCardFull2.Size = new Size(706, 206);
-            gameCardFull2.TabIndex = 2;
+            panel1.AutoScroll = true;
+            panel1.Location = new Point(0, 3);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(829, 372);
+            panel1.TabIndex = 0;
             // 
             // GameCardContainer
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
-            Controls.Add(gameMenuLayoutPanel);
-            Margin = new Padding(2);
+            Controls.Add(panel1);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "GameCardContainer";
-            Size = new Size(712, 430);
-            gameMenuLayoutPanel.ResumeLayout(false);
+            Size = new Size(814, 573);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TableLayoutPanel gameMenuLayoutPanel;
-        private GameCardFull gameCardFull1;
-        private GameCardFull gameCardFull2;
+        private Panel panel1;
     }
 }

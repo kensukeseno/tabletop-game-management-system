@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace TabletopGameManagementSystem.Models
 {
-    internal class Game
+    public class Game
     {
         // JSON-mapped properties
         [JsonPropertyName("id")]
