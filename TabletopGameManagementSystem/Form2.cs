@@ -46,18 +46,23 @@ namespace TabletopGameManagementSystem
             {
                 case "MyShelf":
                     view = new MyShelfView();
+                    titleLabel.Text = "My Shelf";
                     break;
                 case "Collections":
                     view = new CollectionsView();
+                    titleLabel.Text = "Collections";
                     break;
                 case "Wishlist":
                     view = new WishlistView(); //(_games.Where(g => g.IsWishlisted).ToList());
+                    titleLabel.Text = "Wishlist";
                     break;
                 case "Games":
                     view = new AllGamesView();
+                    titleLabel.Text = "All Games";
                     break;
                 case "Spin":
                     view = new SelectorView();
+                    titleLabel.Text = "Game Selector";
                     break;
             }
 
