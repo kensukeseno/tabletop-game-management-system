@@ -10,8 +10,11 @@ using System.Windows.Forms;
 
 namespace TabletopGameManagementSystem.CustomControls
 {
+
     public partial class NavMenu : UserControl
     {
+        public event Action<string> OnMenuSelected; //event delegate for menu selection
+
         public NavMenu()
         {
             InitializeComponent();
@@ -22,9 +25,29 @@ namespace TabletopGameManagementSystem.CustomControls
 
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void btnMyShelf_Click(object sender, EventArgs e)
         {
+            OnMenuSelected?.Invoke("MyShelf");
+        }
 
+        private void btnCollections_Click(object sender, EventArgs e)
+        {
+            OnMenuSelected?.Invoke("Collections");
+        }
+
+        private void btnWishlist_Click(object sender, EventArgs e)
+        {
+            OnMenuSelected?.Invoke("Wishlist");
+        }
+
+        private void btnGames_Click(object sender, EventArgs e)
+        {
+            OnMenuSelected?.Invoke("Games");
+        }
+
+        private void btnSpin_Click(object sender, EventArgs e)
+        {
+            OnMenuSelected?.Invoke("Spin");
         }
     }
 }
