@@ -29,6 +29,7 @@ namespace TabletopGameManagementSystem.CustomControls
             lblGameTitle.Text = game.Name;
             cbMyShelf.Checked = game.IsOwned;
             cbWishlist.Checked = game.IsWishlisted;
+            cbFavorite.Checked = game.IsFavorite;
 
             innerGamedetailsPanel.Controls.Clear();
             innerGamedetailsPanel.RowStyles.Clear();
@@ -74,6 +75,17 @@ namespace TabletopGameManagementSystem.CustomControls
             // update local state
             _game.IsWishlisted = cbWishlist.Checked;
 
+        }
+
+        private void cbFavorite_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_game == null) return;
+
+            // toggle in GameLibrary
+            _gameLibrary.ToggleFavorite(_game.ID, cbFavorite.Checked);
+
+            // update local state
+            _game.IsFavorite = cbFavorite.Checked;
         }
     }
 }
