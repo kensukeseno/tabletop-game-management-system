@@ -165,6 +165,7 @@
             cbWishlist.TabIndex = 1;
             cbWishlist.Text = "Wishlist";
             cbWishlist.UseVisualStyleBackColor = true;
+            cbWishlist.CheckedChanged += cbWishlist_CheckedChanged;
             // 
             // cbMyShelf
             // 
@@ -178,6 +179,7 @@
             cbMyShelf.TabIndex = 0;
             cbMyShelf.Text = "MyShelf";
             cbMyShelf.UseVisualStyleBackColor = true;
+            cbMyShelf.CheckedChanged += cbMyShelf_CheckedChanged;
             // 
             // GameCardFull
             // 

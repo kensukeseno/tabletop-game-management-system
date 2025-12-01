@@ -2,18 +2,21 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TabletopGameManagementSystem.Models;
+using TabletopGameManagementSystem.Services;
 
 namespace TabletopGameManagementSystem.CustomControls
 {
     public partial class GameCardFull : UserControl
     {
         private Game _game;
+        private GameLibrary _gameLibrary = new GameLibrary();
 
         public GameCardFull()
         {
@@ -48,5 +51,29 @@ namespace TabletopGameManagementSystem.CustomControls
             innerGamedetailsPanel.Controls.Add(lblValue, 1, rowIndex);
         }
 
+        private void cbMyShelf_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_game == null) return;
+
+            // toggle in GameLibrary
+            _gameLibrary.ToggleOwned(_game.ID, cbMyShelf.Checked);
+
+            // update local state
+            _game.IsOwned = cbMyShelf.Checked;
+
+            //Debug.WriteLine("Game ID :" + _game.ID + " | Is Owned:" +_game.IsOwned);
+        }
+
+        private void cbWishlist_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_game == null) return;
+
+            // toggle in GameLibrary
+            _gameLibrary.ToggleWishlisted(_game.ID, cbWishlist.Checked);
+
+            // update local state
+            _game.IsWishlisted = cbWishlist.Checked;
+
+        }
     }
 }

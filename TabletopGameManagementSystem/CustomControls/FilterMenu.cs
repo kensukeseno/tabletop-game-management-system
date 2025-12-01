@@ -16,8 +16,9 @@ namespace TabletopGameManagementSystem.CustomControls
 
     public partial class FilterMenu : UserControl
     {
-        // Event that sends a filter function back to the parent view
-        public event Action<Func<Game, bool>> OnFilterApplied;
+        // Event that sends a filter back to the parent view
+        public event Action<FilterCriteria> OnFilterApplied;
+
         public FilterMenu()
         {
             InitializeComponent();
@@ -25,48 +26,19 @@ namespace TabletopGameManagementSystem.CustomControls
 
         private void btnApply_Click(object sender, EventArgs e)
         {
-            string titleFilter = txtTitleFilter.Text.Trim().ToLower();
-
-            Func<Game, bool> filter = g =>
+            var criteria = new FilterCriteria
             {
-                bool ok = true;
-
-                // Title contains (like %text%)
-                if (!string.IsNullOrEmpty(titleFilter))
-                    ok &= g.Name != null && g.Name.ToLower().Contains(titleFilter);
-
-                // Owned
-                if (chkOwned.Checked)
-                    ok &= g.IsOwned;
-
-                // Wishlisted
-                if (chkWishlist.Checked)
-                    ok &= g.IsWishlisted;
-
-                // Favorite
-                if (chkFavorite.Checked)
-                    ok &= g.IsFavorite;
-
-                // Min Players
-                if (numMinPlayers.Value > 0)
-                    ok &= g.MinPlayers >= (int)numMinPlayers.Value;
-
-                // Max Players
-                if (numMaxPlayers.Value > 0)
-                    ok &= g.MaxPlayers <= (int)numMaxPlayers.Value;
-
-                // Playing Time
-                if (numPlayingTime.Value > 0)
-                    ok &= g.PlayingTime <= (int)numPlayingTime.Value;
-
-                // Age Suitability
-                if (numAge.Value > 0)
-                    ok &= g.AgeSuitability <= (int)numAge.Value;
-
-                return ok;
+                NameContains = txtTitleFilter.Text.Trim(),
+                MinPlayers = (int)numMinPlayers.Value,
+                MaxPlayers = (int)numMaxPlayers.Value,
+                PlayingTime = (int)numPlayingTime.Value,
+                AgeSuitability = (int)numAge.Value,
+                IsWishlisted = chkWishlist.Checked,
+                IsOwned = chkOwned.Checked,
+                IsFavorite = chkFavorite.Checked
             };
 
-            OnFilterApplied?.Invoke(filter);
+            OnFilterApplied?.Invoke(criteria);
         }
     }
 }
