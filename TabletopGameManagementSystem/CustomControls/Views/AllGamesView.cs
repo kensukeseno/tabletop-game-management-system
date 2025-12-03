@@ -16,8 +16,6 @@ namespace TabletopGameManagementSystem.CustomControls.Views
     {
         private GameLibrary _gameLibrary;
         private FilterCriteria _lastCriteria; //keep track of last used
-
-
         public AllGamesView(List<Game> gameslist)
         {
             InitializeComponent();

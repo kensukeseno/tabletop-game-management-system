@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TabletopGameManagementSystem.Models;
+using TabletopGameManagementSystem.Services;
 
 
 namespace TabletopGameManagementSystem.CustomControls
@@ -28,9 +29,20 @@ namespace TabletopGameManagementSystem.CustomControls
                 var card = new GameCardFull();
                 card.SetGame(game);
                 card.Dock = DockStyle.Top;
+
+                card.GameRemoved += Card_GameRemoved; //subscribe to event
+
                 this.Controls.Add(card);
             }
         }
+
+        private void Card_GameRemoved(object sender, Game game)
+        {
+            // reload the list after removal
+            var allGames = new GameLibrary().GetAllGames();
+            LoadGames(allGames);
+        }
+
 
     }
 }

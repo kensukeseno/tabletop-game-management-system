@@ -2149,5 +2149,27 @@
 		"isowned": false,
 		"isfavorite": false,
 		"useradded": false
+	},
+	{
+		"id": 999999,
+		"rank": 100,
+		"yearpublished": 1978,
+		"minplayers": 1,
+		"maxplayers": 4,
+		"playingtime": 60,
+		"age": 14,
+		"name": "Tester's Choice'",
+		"description": "Test",
+		"boardgamecategory": [
+			"Card Game",
+			"Fantasy",
+			"Fighting",
+			"Science Fiction"
+		],
+		"lastplayed": null,
+		"iswishlisted": false,
+		"isowned": false,
+		"isfavorite": false,
+		"useradded": false
 	}
 ]

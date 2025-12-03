@@ -18,6 +18,8 @@ namespace TabletopGameManagementSystem.CustomControls
         private Game _game;
         private GameLibrary _gameLibrary = new GameLibrary();
 
+        public event EventHandler<Game> GameRemoved; // bubble up event
+
         public GameCardFull()
         {
             InitializeComponent();
@@ -38,6 +40,7 @@ namespace TabletopGameManagementSystem.CustomControls
             AddDetailRow("Players", $"{game.MinPlayers}-{game.MaxPlayers}");
             AddDetailRow("Playing Time", $"{game.PlayingTime} mins");
             AddDetailRow("Age", $"{game.AgeSuitability}+");
+            AddDetailRow("Description", game.Desc);
         }
 
         private void AddDetailRow(string heading, string value)
@@ -86,6 +89,26 @@ namespace TabletopGameManagementSystem.CustomControls
 
             // update local state
             _game.IsFavorite = cbFavorite.Checked;
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            if (_game == null) return;
+
+            var confirm = MessageBox.Show(
+                $"Are you sure you want to remove {_game.Name}?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning
+            );
+
+            if (confirm == DialogResult.Yes)
+            {
+                _gameLibrary.DeleteGame(_game.ID);
+                GameRemoved?.Invoke(this, _game); // notify container
+            }
+
+
         }
     }
 }

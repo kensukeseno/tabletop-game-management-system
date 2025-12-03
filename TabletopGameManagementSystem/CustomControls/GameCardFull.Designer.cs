@@ -30,14 +30,15 @@
         {
             gameCard_panel = new TableLayoutPanel();
             gamedetails_panel = new TableLayoutPanel();
+            lblGameTitle = new Label();
             innerGamedetailsPanel = new TableLayoutPanel();
             label3 = new Label();
             label2 = new Label();
-            lblGameTitle = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
+            cbFavorite = new CheckBox();
             cbWishlist = new CheckBox();
             cbMyShelf = new CheckBox();
-            cbFavorite = new CheckBox();
+            btnRemove = new Button();
             gameCard_panel.SuspendLayout();
             gamedetails_panel.SuspendLayout();
             innerGamedetailsPanel.SuspendLayout();
@@ -47,16 +48,18 @@
             // gameCard_panel
             // 
             gameCard_panel.ColumnCount = 2;
-            gameCard_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            gameCard_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            gameCard_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40.59406F));
+            gameCard_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 59.40594F));
             gameCard_panel.Controls.Add(gamedetails_panel, 1, 0);
             gameCard_panel.Controls.Add(tableLayoutPanel1, 0, 0);
+            gameCard_panel.Controls.Add(btnRemove, 0, 1);
             gameCard_panel.Dock = DockStyle.Fill;
             gameCard_panel.Location = new Point(0, 0);
             gameCard_panel.Name = "gameCard_panel";
-            gameCard_panel.RowCount = 2;
-            gameCard_panel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            gameCard_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            gameCard_panel.RowCount = 3;
+            gameCard_panel.RowStyles.Add(new RowStyle());
+            gameCard_panel.RowStyles.Add(new RowStyle());
+            gameCard_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 380F));
             gameCard_panel.Size = new Size(808, 267);
             gameCard_panel.TabIndex = 0;
             // 
@@ -64,10 +67,10 @@
             // 
             gamedetails_panel.ColumnCount = 1;
             gamedetails_panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            gamedetails_panel.Controls.Add(innerGamedetailsPanel, 0, 1);
             gamedetails_panel.Controls.Add(lblGameTitle, 0, 0);
+            gamedetails_panel.Controls.Add(innerGamedetailsPanel, 0, 1);
             gamedetails_panel.Dock = DockStyle.Fill;
-            gamedetails_panel.Location = new Point(407, 29);
+            gamedetails_panel.Location = new Point(331, 29);
             gamedetails_panel.Margin = new Padding(3, 29, 3, 3);
             gamedetails_panel.Name = "gamedetails_panel";
             gamedetails_panel.RowCount = 2;
@@ -76,8 +79,22 @@
             gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            gamedetails_panel.Size = new Size(398, 215);
+            gamedetails_panel.Size = new Size(474, 215);
             gamedetails_panel.TabIndex = 1;
+            // 
+            // lblGameTitle
+            // 
+            lblGameTitle.Anchor = AnchorStyles.None;
+            lblGameTitle.AutoSize = true;
+            lblGameTitle.Font = new Font("Broadway", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblGameTitle.ForeColor = SystemColors.ActiveBorder;
+            lblGameTitle.Location = new Point(163, 12);
+            lblGameTitle.MaximumSize = new Size(500, 0);
+            lblGameTitle.Name = "lblGameTitle";
+            lblGameTitle.Size = new Size(148, 26);
+            lblGameTitle.TabIndex = 0;
+            lblGameTitle.Text = "Game Title";
+            lblGameTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // innerGamedetailsPanel
             // 
@@ -96,7 +113,7 @@
             innerGamedetailsPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
             innerGamedetailsPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
             innerGamedetailsPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 16.666666F));
-            innerGamedetailsPanel.Size = new Size(392, 158);
+            innerGamedetailsPanel.Size = new Size(468, 158);
             innerGamedetailsPanel.TabIndex = 1;
             // 
             // label3
@@ -105,7 +122,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Calisto MT", 14.25F);
             label3.ForeColor = SystemColors.ActiveBorder;
-            label3.Location = new Point(262, 0);
+            label3.Location = new Point(319, 0);
             label3.Name = "label3";
             label3.Size = new Size(63, 26);
             label3.TabIndex = 3;
@@ -117,25 +134,11 @@
             label2.AutoSize = true;
             label2.Font = new Font("Calisto MT", 14.25F);
             label2.ForeColor = SystemColors.ActiveBorder;
-            label2.Location = new Point(48, 0);
+            label2.Location = new Point(67, 0);
             label2.Name = "label2";
             label2.Size = new Size(99, 26);
             label2.TabIndex = 2;
             label2.Text = "Heading";
-            // 
-            // lblGameTitle
-            // 
-            lblGameTitle.Anchor = AnchorStyles.None;
-            lblGameTitle.AutoSize = true;
-            lblGameTitle.Font = new Font("Broadway", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblGameTitle.ForeColor = SystemColors.ActiveBorder;
-            lblGameTitle.Location = new Point(125, 12);
-            lblGameTitle.MaximumSize = new Size(500, 0);
-            lblGameTitle.Name = "lblGameTitle";
-            lblGameTitle.Size = new Size(148, 26);
-            lblGameTitle.TabIndex = 0;
-            lblGameTitle.Text = "Game Title";
-            lblGameTitle.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
             // 
@@ -148,23 +151,38 @@
             tableLayoutPanel1.Controls.Add(cbFavorite, 0, 2);
             tableLayoutPanel1.Controls.Add(cbWishlist, 0, 1);
             tableLayoutPanel1.Controls.Add(cbMyShelf, 0, 0);
-            tableLayoutPanel1.Location = new Point(112, 33);
+            tableLayoutPanel1.Location = new Point(13, 45);
             tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.Padding = new Padding(0, 30, 0, 30);
-            tableLayoutPanel1.RowCount = 3;
+            tableLayoutPanel1.RowCount = 4;
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.Size = new Size(180, 180);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel1.Size = new Size(301, 156);
             tableLayoutPanel1.TabIndex = 2;
+            // 
+            // cbFavorite
+            // 
+            cbFavorite.Anchor = AnchorStyles.None;
+            cbFavorite.AutoSize = true;
+            cbFavorite.Font = new Font("Broadway", 14.25F);
+            cbFavorite.Location = new Point(79, 112);
+            cbFavorite.Margin = new Padding(3, 4, 3, 4);
+            cbFavorite.Name = "cbFavorite";
+            cbFavorite.Size = new Size(142, 31);
+            cbFavorite.TabIndex = 3;
+            cbFavorite.Text = "Favorite";
+            cbFavorite.UseVisualStyleBackColor = true;
+            cbFavorite.CheckedChanged += cbFavorite_CheckedChanged;
             // 
             // cbWishlist
             // 
             cbWishlist.Anchor = AnchorStyles.None;
             cbWishlist.AutoSize = true;
             cbWishlist.Font = new Font("Broadway", 14.25F);
-            cbWishlist.Location = new Point(21, 73);
+            cbWishlist.Location = new Point(82, 73);
             cbWishlist.Margin = new Padding(3, 4, 3, 4);
             cbWishlist.Name = "cbWishlist";
             cbWishlist.Size = new Size(137, 31);
@@ -178,7 +196,7 @@
             cbMyShelf.Anchor = AnchorStyles.None;
             cbMyShelf.AutoSize = true;
             cbMyShelf.Font = new Font("Broadway", 14.25F);
-            cbMyShelf.Location = new Point(22, 34);
+            cbMyShelf.Location = new Point(83, 34);
             cbMyShelf.Margin = new Padding(3, 4, 3, 4);
             cbMyShelf.Name = "cbMyShelf";
             cbMyShelf.Size = new Size(135, 31);
@@ -187,19 +205,24 @@
             cbMyShelf.UseVisualStyleBackColor = true;
             cbMyShelf.CheckedChanged += cbMyShelf_CheckedChanged;
             // 
-            // cbFavorite
+            // btnRemove
             // 
-            cbFavorite.Anchor = AnchorStyles.None;
-            cbFavorite.AutoSize = true;
-            cbFavorite.Font = new Font("Broadway", 14.25F);
-            cbFavorite.Location = new Point(19, 113);
-            cbFavorite.Margin = new Padding(3, 4, 3, 4);
-            cbFavorite.Name = "cbFavorite";
-            cbFavorite.Size = new Size(142, 31);
-            cbFavorite.TabIndex = 3;
-            cbFavorite.Text = "Favorite";
-            cbFavorite.UseVisualStyleBackColor = true;
-            cbFavorite.CheckedChanged += cbFavorite_CheckedChanged;
+            btnRemove.Anchor = AnchorStyles.None;
+            btnRemove.BackColor = Color.Transparent;
+            btnRemove.BackgroundImage = Properties.Resources.grey_square;
+            btnRemove.BackgroundImageLayout = ImageLayout.Stretch;
+            btnRemove.FlatAppearance.BorderSize = 0;
+            btnRemove.FlatStyle = FlatStyle.Flat;
+            btnRemove.Font = new Font("Broadway", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRemove.ForeColor = Color.Black;
+            btnRemove.Location = new Point(98, 263);
+            btnRemove.Margin = new Padding(0, 16, 0, 0);
+            btnRemove.Name = "btnRemove";
+            btnRemove.Size = new Size(131, 4);
+            btnRemove.TabIndex = 16;
+            btnRemove.Text = "Remove";
+            btnRemove.UseVisualStyleBackColor = false;
+            btnRemove.Click += btnRemove_Click;
             // 
             // GameCardFull
             // 
@@ -234,5 +257,6 @@
         private CheckBox cbWishlist;
         private CheckBox cbMyShelf;
         private CheckBox cbFavorite;
+        private Button btnRemove;
     }
 }
