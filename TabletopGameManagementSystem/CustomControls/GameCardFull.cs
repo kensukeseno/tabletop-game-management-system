@@ -50,6 +50,8 @@ namespace TabletopGameManagementSystem.CustomControls
 
             var lblHeading = new Label { Text = heading, AutoSize = true, Font = new Font("Segoe UI", 9, FontStyle.Bold) };
             var lblValue = new Label { Text = value, AutoSize = true };
+            lblValue.AutoEllipsis = true;
+            lblValue.MaximumSize = new Size(400, 200);
 
             innerGamedetailsPanel.Controls.Add(lblHeading, 0, rowIndex);
             innerGamedetailsPanel.Controls.Add(lblValue, 1, rowIndex);
