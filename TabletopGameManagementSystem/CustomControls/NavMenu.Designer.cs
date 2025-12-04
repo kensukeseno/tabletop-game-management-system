@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             navLayoutPanel = new TableLayoutPanel();
-            button5 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            button8 = new Button();
-            button9 = new Button();
+            btnMyShelf = new Button();
+            btnCollections = new Button();
+            btnWishlist = new Button();
+            btnGames = new Button();
+            btnSpin = new Button();
             navLayoutPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -42,13 +42,13 @@
             navLayoutPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             navLayoutPanel.ColumnCount = 1;
             navLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            navLayoutPanel.Controls.Add(button2, 0, 0);
-            navLayoutPanel.Controls.Add(button3, 0, 1);
-            navLayoutPanel.Controls.Add(button5, 0, 2);
-            navLayoutPanel.Controls.Add(button9, 0, 3);
-            navLayoutPanel.Controls.Add(button8, 0, 4);
-            navLayoutPanel.Location = new Point(0, 34);
-            navLayoutPanel.Margin = new Padding(2);
+            navLayoutPanel.Controls.Add(btnMyShelf, 0, 0);
+            navLayoutPanel.Controls.Add(btnCollections, 0, 1);
+            navLayoutPanel.Controls.Add(btnWishlist, 0, 2);
+            navLayoutPanel.Controls.Add(btnGames, 0, 3);
+            navLayoutPanel.Controls.Add(btnSpin, 0, 4);
+            navLayoutPanel.Location = new Point(0, 45);
+            navLayoutPanel.Margin = new Padding(2, 3, 2, 3);
             navLayoutPanel.Name = "navLayoutPanel";
             navLayoutPanel.RowCount = 5;
             navLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 15.3846188F));
@@ -56,101 +56,106 @@
             navLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 15.3846159F));
             navLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 15.3846159F));
             navLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 23.0769234F));
-            navLayoutPanel.Size = new Size(279, 389);
+            navLayoutPanel.Size = new Size(319, 519);
             navLayoutPanel.TabIndex = 0;
             // 
-            // button5
+            // btnMyShelf
             // 
-            button5.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button5.BackColor = Color.Transparent;
-            button5.FlatAppearance.BorderSize = 0;
-            button5.FlatStyle = FlatStyle.Flat;
-            button5.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button5.ForeColor = SystemColors.ActiveBorder;
-            button5.Location = new Point(0, 152);
-            button5.Margin = new Padding(0, 12, 0, 0);
-            button5.Name = "button5";
-            button5.Size = new Size(279, 58);
-            button5.TabIndex = 6;
-            button5.Text = "Wishlist";
-            button5.UseVisualStyleBackColor = false;
+            btnMyShelf.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnMyShelf.BackColor = Color.Transparent;
+            btnMyShelf.FlatAppearance.BorderSize = 0;
+            btnMyShelf.FlatStyle = FlatStyle.Flat;
+            btnMyShelf.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMyShelf.ForeColor = SystemColors.ActiveBorder;
+            btnMyShelf.Location = new Point(0, 16);
+            btnMyShelf.Margin = new Padding(0, 16, 0, 0);
+            btnMyShelf.Name = "btnMyShelf";
+            btnMyShelf.Size = new Size(319, 78);
+            btnMyShelf.TabIndex = 3;
+            btnMyShelf.Text = "My Shelf";
+            btnMyShelf.UseVisualStyleBackColor = false;
+            btnMyShelf.Click += btnMyShelf_Click;
             // 
-            // button3
+            // btnCollections
             // 
-            button3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button3.BackColor = Color.Transparent;
-            button3.FlatAppearance.BorderSize = 0;
-            button3.FlatStyle = FlatStyle.Flat;
-            button3.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button3.ForeColor = SystemColors.ActiveBorder;
-            button3.Location = new Point(0, 82);
-            button3.Margin = new Padding(0, 12, 0, 0);
-            button3.Name = "button3";
-            button3.Size = new Size(279, 58);
-            button3.TabIndex = 4;
-            button3.Text = "Collections";
-            button3.UseVisualStyleBackColor = false;
+            btnCollections.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnCollections.BackColor = Color.Transparent;
+            btnCollections.FlatAppearance.BorderSize = 0;
+            btnCollections.FlatStyle = FlatStyle.Flat;
+            btnCollections.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnCollections.ForeColor = SystemColors.ActiveBorder;
+            btnCollections.Location = new Point(0, 110);
+            btnCollections.Margin = new Padding(0, 16, 0, 0);
+            btnCollections.Name = "btnCollections";
+            btnCollections.Size = new Size(319, 78);
+            btnCollections.TabIndex = 4;
+            btnCollections.Text = "Collections";
+            btnCollections.UseVisualStyleBackColor = false;
+            btnCollections.Click += btnCollections_Click;
             // 
-            // button2
+            // btnWishlist
             // 
-            button2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button2.BackColor = Color.Transparent;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = SystemColors.ActiveBorder;
-            button2.Location = new Point(0, 12);
-            button2.Margin = new Padding(0, 12, 0, 0);
-            button2.Name = "button2";
-            button2.Size = new Size(279, 58);
-            button2.TabIndex = 3;
-            button2.Text = "My Shelf";
-            button2.UseVisualStyleBackColor = false;
+            btnWishlist.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnWishlist.BackColor = Color.Transparent;
+            btnWishlist.FlatAppearance.BorderSize = 0;
+            btnWishlist.FlatStyle = FlatStyle.Flat;
+            btnWishlist.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnWishlist.ForeColor = SystemColors.ActiveBorder;
+            btnWishlist.Location = new Point(0, 204);
+            btnWishlist.Margin = new Padding(0, 16, 0, 0);
+            btnWishlist.Name = "btnWishlist";
+            btnWishlist.Size = new Size(319, 78);
+            btnWishlist.TabIndex = 6;
+            btnWishlist.Text = "Wishlist";
+            btnWishlist.UseVisualStyleBackColor = false;
+            btnWishlist.Click += btnWishlist_Click;
             // 
-            // button8
+            // btnGames
             // 
-            button8.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            button8.BackgroundImage = Properties.Resources.record_logo_purple;
-            button8.BackgroundImageLayout = ImageLayout.Zoom;
-            button8.FlatAppearance.BorderSize = 0;
-            button8.FlatStyle = FlatStyle.Flat;
-            button8.Font = new Font("Broadway", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button8.Location = new Point(3, 283);
-            button8.Name = "button8";
-            button8.Size = new Size(273, 103);
-            button8.TabIndex = 10;
-            button8.Text = "Spin";
-            button8.UseVisualStyleBackColor = true;
-            button8.Click += button8_Click;
+            btnGames.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btnGames.BackColor = Color.Transparent;
+            btnGames.FlatAppearance.BorderSize = 0;
+            btnGames.FlatStyle = FlatStyle.Flat;
+            btnGames.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnGames.ForeColor = SystemColors.ActiveBorder;
+            btnGames.Location = new Point(0, 298);
+            btnGames.Margin = new Padding(0, 16, 0, 0);
+            btnGames.Name = "btnGames";
+            btnGames.Size = new Size(319, 78);
+            btnGames.TabIndex = 11;
+            btnGames.Text = "Games";
+            btnGames.UseVisualStyleBackColor = false;
+            btnGames.Click += btnGames_Click;
             // 
-            // button9
+            // btnSpin
             // 
-            button9.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            button9.BackColor = Color.Transparent;
-            button9.FlatAppearance.BorderSize = 0;
-            button9.FlatStyle = FlatStyle.Flat;
-            button9.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button9.ForeColor = SystemColors.ActiveBorder;
-            button9.Location = new Point(0, 222);
-            button9.Margin = new Padding(0, 12, 0, 0);
-            button9.Name = "button9";
-            button9.Size = new Size(279, 58);
-            button9.TabIndex = 11;
-            button9.Text = "Games";
-            button9.UseVisualStyleBackColor = false;
+            btnSpin.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            btnSpin.BackgroundImage = Properties.Resources.record_logo_purple;
+            btnSpin.BackgroundImageLayout = ImageLayout.Zoom;
+            btnSpin.FlatAppearance.BorderSize = 0;
+            btnSpin.FlatStyle = FlatStyle.Flat;
+            btnSpin.Font = new Font("Broadway", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSpin.Location = new Point(3, 380);
+            btnSpin.Margin = new Padding(3, 4, 3, 4);
+            btnSpin.Name = "btnSpin";
+            btnSpin.Size = new Size(312, 135);
+            btnSpin.TabIndex = 10;
+            btnSpin.Text = "Spin";
+            btnSpin.UseVisualStyleBackColor = true;
+            btnSpin.Click += btnSpin_Click;
             // 
             // NavMenu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
             BackgroundImage = Properties.Resources.dk_grey_square;
             BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(navLayoutPanel);
             DoubleBuffered = true;
-            Margin = new Padding(2);
+            Margin = new Padding(2, 3, 2, 3);
             Name = "NavMenu";
-            Size = new Size(279, 443);
+            Size = new Size(319, 591);
             Load += NavMenu_Load;
             navLayoutPanel.ResumeLayout(false);
             ResumeLayout(false);
@@ -159,10 +164,10 @@
         #endregion
 
         private TableLayoutPanel navLayoutPanel;
-        private Button button3;
-        private Button button2;
-        private Button button5;
-        private Button button8;
-        private Button button9;
+        private Button btnCollections;
+        private Button btnMyShelf;
+        private Button btnWishlist;
+        private Button btnSpin;
+        private Button btnGames;
     }
 }
