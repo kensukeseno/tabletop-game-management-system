@@ -156,6 +156,25 @@ namespace TabletopGameManagementSystem.Services
                 return null;
             }
         }
+
+        // AL - Taking advantage of overload so I don't rewrite the filtering logic above
+        public List<Game> FindGames(FilterCriteria criteria)
+        {
+            return FindGames(
+                name: criteria.NameContains,
+                minPlayers: criteria.MinPlayers,
+                maxPlayers: criteria.MaxPlayers,
+                playingTime: criteria.PlayingTime,
+                categories: null,
+                ageSuitability: criteria.AgeSuitability,
+                isWishlisted: criteria.IsWishlisted,
+                isOwned: criteria.IsOwned,
+                isFavorite: criteria.IsFavorite
+            );
+        }
+
+
+
         // Add a game to the boardgames json file
         // Param: game
         // Return: None
@@ -180,6 +199,8 @@ namespace TabletopGameManagementSystem.Services
                 games.Add(game);
                 string newJsonString = JsonSerializer.Serialize(games);
                 File.WriteAllText(_boardgamefilePath, newJsonString);
+                Debug.WriteLine($"Writing to {_boardgamefilePath} from {nameof(ToggleOwned)}");
+
             }
             catch (Exception ex)
             {
@@ -200,6 +221,7 @@ namespace TabletopGameManagementSystem.Services
 
                 string newJsonString = JsonSerializer.Serialize(deletedGames);
                 File.WriteAllText(_boardgamefilePath, newJsonString);
+                Debug.WriteLine($"Writing to {_boardgamefilePath} from {nameof(ToggleOwned)}");
 
                 // Delete this game from all the collections
                 string collectionJsonString = File.ReadAllText(_collectionfilePath);
@@ -241,6 +263,7 @@ namespace TabletopGameManagementSystem.Services
                     collections.Add(collection);
                     jsonString = JsonSerializer.Serialize(collections);
                     File.WriteAllText(_collectionfilePath, jsonString);
+                    Debug.WriteLine($"Writing to {_collectionfilePath} from {nameof(ToggleOwned)}");
                 }
             }
             catch (Exception ex)
@@ -262,6 +285,7 @@ namespace TabletopGameManagementSystem.Services
 
                 jsonString = JsonSerializer.Serialize(deletedCollections);
                 File.WriteAllText(_collectionfilePath, jsonString);
+                Debug.WriteLine($"Writing to {_collectionfilePath} from {nameof(ToggleOwned)}");
             }
             catch (Exception ex)
             {
@@ -287,6 +311,7 @@ namespace TabletopGameManagementSystem.Services
 
                 jsonString = JsonSerializer.Serialize(collections);
                 File.WriteAllText(_collectionfilePath, jsonString);
+                Debug.WriteLine($"Writing to {_collectionfilePath} from {nameof(ToggleOwned)}");
             }
             catch (Exception ex)
             {
@@ -309,6 +334,7 @@ namespace TabletopGameManagementSystem.Services
 
                 jsonString = JsonSerializer.Serialize(collections);
                 File.WriteAllText(_collectionfilePath, jsonString);
+                Debug.WriteLine($"Writing to {_collectionfilePath} from {nameof(ToggleOwned)}");
             }
             catch (Exception ex)
             {
@@ -330,12 +356,35 @@ namespace TabletopGameManagementSystem.Services
 
                 string newJsonString = JsonSerializer.Serialize(games);
                 File.WriteAllText(_boardgamefilePath, newJsonString);
+                Debug.WriteLine($"Writing to {_boardgamefilePath} from {nameof(ToggleOwned)}");
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
+
+        // overload of ToggleWishlisted to set isWishlisted to a specific value
+        public void ToggleWishlisted(int id, bool paramWishlist)
+        {
+            try
+            {
+                string jsonString = File.ReadAllText(_boardgamefilePath);
+                List<Game> games = JsonSerializer.Deserialize<List<Game>>(jsonString);
+
+                int index = games.FindIndex(game => game.ID == id);
+                games[index].IsWishlisted = paramWishlist;
+
+                string newJsonString = JsonSerializer.Serialize(games);
+                File.WriteAllText(_boardgamefilePath, newJsonString);
+                Debug.WriteLine($"Writing to {_boardgamefilePath} from {nameof(ToggleOwned)}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+
         // Toggle isFavorite of a game
         // Param: game id
         // Return: None
@@ -351,6 +400,28 @@ namespace TabletopGameManagementSystem.Services
 
                 string newJsonString = JsonSerializer.Serialize(games);
                 File.WriteAllText(_boardgamefilePath, newJsonString);
+                Debug.WriteLine($"Writing to {_boardgamefilePath} from {nameof(ToggleOwned)}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+
+        // overload of ToggleFavorite to set isFavorite to a specific value
+        public void ToggleFavorite(int id, bool paramFavorite)
+        {
+            try
+            {
+                string jsonString = File.ReadAllText(_boardgamefilePath);
+                List<Game> games = JsonSerializer.Deserialize<List<Game>>(jsonString);
+
+                int index = games.FindIndex(game => game.ID == id);
+                games[index].IsFavorite = paramFavorite;
+
+                string newJsonString = JsonSerializer.Serialize(games);
+                File.WriteAllText(_boardgamefilePath, newJsonString);
+                Debug.WriteLine($"Writing to {_boardgamefilePath} from {nameof(ToggleOwned)}");
             }
             catch (Exception ex)
             {
@@ -370,13 +441,43 @@ namespace TabletopGameManagementSystem.Services
                 int index = games.FindIndex(game => game.ID == id);
                 games[index].IsOwned = !games[index].IsOwned;
 
+                Debug.WriteLine($"Writing IsOwned={games[index].IsOwned} for game {games[index].Name} (ID {id})");
+
                 string newJsonString = JsonSerializer.Serialize(games);
                 File.WriteAllText(_boardgamefilePath, newJsonString);
+                Debug.WriteLine($"Writing to {_boardgamefilePath} from {nameof(ToggleOwned)}");
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
+
+        // overload of ToggleOwned to set isOwned to a specific value
+        public void ToggleOwned(int id, bool paramOwned)
+        {
+            try
+            {
+                string jsonString = File.ReadAllText(_boardgamefilePath);
+                List<Game> games = JsonSerializer.Deserialize<List<Game>>(jsonString);
+
+                int index = games.FindIndex(game => game.ID == id);
+                games[index].IsOwned = paramOwned;
+
+                Debug.WriteLine($"Writing IsOwned={games[index].IsOwned} for game {games[index].Name} (ID {id})");
+
+                string newJsonString = JsonSerializer.Serialize(games);
+                File.WriteAllText(_boardgamefilePath, newJsonString);
+                Debug.WriteLine($"Writing to {_boardgamefilePath} from {nameof(ToggleOwned)}");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+
+
     }
 }
