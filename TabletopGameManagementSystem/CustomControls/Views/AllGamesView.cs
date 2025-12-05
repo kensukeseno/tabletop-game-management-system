@@ -47,6 +47,13 @@ namespace TabletopGameManagementSystem.CustomControls.Views
 
         private bool AreCriteriaEqual(FilterCriteria a, FilterCriteria b)
         {
+            bool categoriesEqual = false;
+
+            if (a.Categories == null && b.Categories == null)
+                categoriesEqual = true;
+            else if (a.Categories != null && b.Categories != null)
+                categoriesEqual = a.Categories.SequenceEqual(b.Categories);
+
             return a.NameContains == b.NameContains &&
                    a.MinPlayers == b.MinPlayers &&
                    a.MaxPlayers == b.MaxPlayers &&
@@ -54,7 +61,8 @@ namespace TabletopGameManagementSystem.CustomControls.Views
                    a.AgeSuitability == b.AgeSuitability &&
                    a.IsWishlisted == b.IsWishlisted &&
                    a.IsOwned == b.IsOwned &&
-                   a.IsFavorite == b.IsFavorite;
+                   a.IsFavorite == b.IsFavorite &&
+                   categoriesEqual;
         }
     }
 }

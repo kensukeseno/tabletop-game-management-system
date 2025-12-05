@@ -165,7 +165,7 @@ namespace TabletopGameManagementSystem.Services
                 minPlayers: criteria.MinPlayers,
                 maxPlayers: criteria.MaxPlayers,
                 playingTime: criteria.PlayingTime,
-                categories: null,
+                categories: criteria.Categories,
                 ageSuitability: criteria.AgeSuitability,
                 isWishlisted: criteria.IsWishlisted,
                 isOwned: criteria.IsOwned,
