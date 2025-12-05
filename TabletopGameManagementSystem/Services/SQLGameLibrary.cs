@@ -14,15 +14,7 @@ namespace TabletopGameManagementSystem.Services
 {
     internal class SQLGameLibrary : IGameLibrary
     {
-
-        private static string _binDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        private static string _boardgamefilePath = Path.Combine(_binDirectory, "Data/boardgames.json");
-        private static string _collectionfilePath = Path.Combine(_binDirectory, "Data/collections.json");
-        private static string _categoryfilePath = Path.Combine(_binDirectory, "Data/categories.json");
-
-        private static int _maxIdInTop100 = 421006;
-
-        private string _connectionString = "Data Source=KEN\\SQLEXPRESS;Initial Catalog=TurnTable;"
+        private string _connectionString = "Data Source=SERVER_NAME;Initial Catalog=TurnTable;"
                 + "Integrated Security=true;TrustServerCertificate=True";
 
         // Get all games data from the boardgames json file
