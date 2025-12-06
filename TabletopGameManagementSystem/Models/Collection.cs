@@ -9,7 +9,7 @@ using System.Text.Json.Serialization;
 
 namespace TabletopGameManagementSystem.Models
 {
-    internal class Collection
+    public class Collection
     {
         [JsonPropertyName("id")]
         public int ID { get; set; }

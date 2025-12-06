@@ -18,19 +18,16 @@ namespace TabletopGameManagementSystem
     public partial class Form2 : Form
     {
 
-        private GameLibrary _gameLibrary;
-        private List<Game> _games;
+        private IGameLibrary _gameLibrary;
 
         public Form2()
         {
             InitializeComponent();
 
-            _gameLibrary = new GameLibrary();       // intialize the game library service
-            _games = _gameLibrary.GetAllGames();    // build a list of games from the service
+            _gameLibrary = new SQLGameLibrary();       // intialize the game library service
 
-            Debug.WriteLine(_games.Count());
-
-            navMenu1.OnMenuSelected += HandleNavigation;    // subscribe to navigation events
+            navMenu1.OnMenuSelected += HandleNavigation;
+            //HandleNavigation("Games"); // show All Games on startup
         }
         private void Form2_Load(object sender, EventArgs e)
         {
@@ -45,23 +42,23 @@ namespace TabletopGameManagementSystem
             switch (viewName)
             {
                 case "MyShelf":
-                    view = new MyShelfView();
+                    view = new MyShelfView(_gameLibrary);
                     titleLabel.Text = "My Shelf";
                     break;
                 case "Collections":
-                    view = new CollectionsView();
+                    view = new CollectionsView(_gameLibrary);
                     titleLabel.Text = "Collections";
                     break;
                 case "Wishlist":
-                    view = new WishlistView(); //(_games.Where(g => g.IsWishlisted).ToList());
+                    view = new WishlistView(_gameLibrary);
                     titleLabel.Text = "Wishlist";
                     break;
                 case "Games":
-                    view = new AllGamesView(_games);
+                    view = new AllGamesView(_gameLibrary);
                     titleLabel.Text = "All Games";
                     break;
                 case "Spin":
-                    view = new SelectorView();
+                    view = new SelectorView(_gameLibrary);
                     titleLabel.Text = "Game Selector";
                     break;
             }

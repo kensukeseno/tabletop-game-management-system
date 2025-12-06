@@ -14,7 +14,7 @@ namespace TabletopGameManagementSystem.Services
 {
     internal class SQLGameLibrary : IGameLibrary
     {
-        private string _connectionString = "Data Source=SERVER_NAME;Initial Catalog=TurnTable;"
+        private string _connectionString = "Data Source=ANDREILAQUI\\SQLEXPRESS;Initial Catalog=TurnTable;"
                 + "Integrated Security=true;TrustServerCertificate=True";
 
         // Get all games data from the boardgames json file
@@ -123,30 +123,23 @@ namespace TabletopGameManagementSystem.Services
             }
             if (minPlayers != 0)
             {
-                games = games.Where(game => game.MinPlayers >= minPlayers).ToList();
+                games = games.Where(game => game.MinPlayers == minPlayers).ToList();
             }
             if (maxPlayers != 0)
             {
-                games = games.Where(game => game.MaxPlayers <= maxPlayers).ToList();
+                games = games.Where(game => game.MaxPlayers == maxPlayers).ToList();
             }
             if (playingTime != 0)
             {
                 games = games.Where(game => game.PlayingTime <= playingTime).ToList();
             }
-            if (categories != null)
+            if (categories?.Any() == true)
             {
-                games = games.Where(game =>
-                {
-                    foreach (var category in categories)
-                    {
-                        if (game.Categories.Contains(category)) return true;
-                    }
-                    return false;
-                }).ToList();
+                games = games.Where(game => categories.Any(category => game.Categories.Contains(category))).ToList();
             }
             if (ageSuitability != 0)
             {
-                games = games.Where(game => game.AgeSuitability >= ageSuitability).ToList();
+                games = games.Where(game => game.AgeSuitability <= ageSuitability).ToList();
             }
             if (isWishlisted)
             {
@@ -171,7 +164,7 @@ namespace TabletopGameManagementSystem.Services
                 minPlayers: criteria.MinPlayers,
                 maxPlayers: criteria.MaxPlayers,
                 playingTime: criteria.PlayingTime,
-                categories: null,
+                categories: criteria.Categories,
                 ageSuitability: criteria.AgeSuitability,
                 isWishlisted: criteria.IsWishlisted,
                 isOwned: criteria.IsOwned,

@@ -51,7 +51,6 @@
             myShelf_layoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             myShelf_layoutPanel.Size = new Size(1042, 488);
             myShelf_layoutPanel.TabIndex = 3;
-            myShelf_layoutPanel.Paint += myShelf_layoutPanel_Paint;
             // 
             // filterMenu1
             // 

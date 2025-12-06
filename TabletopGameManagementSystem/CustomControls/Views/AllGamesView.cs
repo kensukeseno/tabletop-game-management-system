@@ -14,21 +14,24 @@ namespace TabletopGameManagementSystem.CustomControls.Views
 {
     public partial class AllGamesView : UserControl
     {
-        private GameLibrary _gameLibrary;
+        private readonly IGameLibrary _gameLibrary;
+
         private FilterCriteria _lastCriteria; //keep track of last used
-        public AllGamesView(List<Game> gameslist)
+        public AllGamesView(IGameLibrary gameLibrary)
         {
             InitializeComponent();
 
-            _gameLibrary = new GameLibrary();
+            _gameLibrary = gameLibrary;
 
-            // FilterMenu event
+            games_layoutPanel.Controls.Remove(filterMenu1);
+            filterMenu1 = new FilterMenu(_gameLibrary);
             filterMenu1.OnFilterApplied += ApplyFilter;
+            games_layoutPanel.Controls.Add(filterMenu1);
+
 
             // load everything first
-            var allGames = new List<Game>();
-            allGames = _gameLibrary.GetAllGames();
-            gameCardContainer1.LoadGames(allGames);
+            var allGames = _gameLibrary.GetAllGames();
+            gameCardContainer1.LoadGames(_gameLibrary, allGames);
 
             // Store initial criteria as null
             _lastCriteria = null;
@@ -40,7 +43,7 @@ namespace TabletopGameManagementSystem.CustomControls.Views
                 return; // no change, don't bother filtering
 
             var filteredGames = _gameLibrary.FindGames(criteria);
-            gameCardContainer1.LoadGames(filteredGames ?? new List<Game>()); // load filtered list
+            gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>()); // load filtered list
 
             _lastCriteria = criteria; // update last used criteria
         }

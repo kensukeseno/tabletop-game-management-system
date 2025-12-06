@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 namespace TabletopGameManagementSystem.Services
 {
-    internal interface IGameLibrary
+    public interface IGameLibrary
     {
 
         // Get all games data from the boardgames

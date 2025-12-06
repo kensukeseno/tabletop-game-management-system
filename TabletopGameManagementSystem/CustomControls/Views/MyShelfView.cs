@@ -7,19 +7,30 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TabletopGameManagementSystem.Models;
+using TabletopGameManagementSystem.Services;
 
 namespace TabletopGameManagementSystem.CustomControls.Views
 {
     public partial class MyShelfView : UserControl
     {
-        public MyShelfView()
+        private readonly IGameLibrary _gameLibrary;
+
+        public MyShelfView() : this(null) { } // so designer won't get angry!
+
+        public MyShelfView(IGameLibrary gameLibrary)
         {
             InitializeComponent();
+
+            _gameLibrary = gameLibrary;
+            if (_gameLibrary != null)
+            {
+                var ownedGames = _gameLibrary.FindGames(new FilterCriteria { IsOwned = true });
+                //gameCardContainer1.LoadGames(_gameLibrary, ownedGames);
+            }
+
+
         }
 
-        private void myShelf_layoutPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }
