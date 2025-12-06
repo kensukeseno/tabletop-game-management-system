@@ -23,5 +23,7 @@ namespace TabletopGameManagementSystem.Models
             Name = name.Trim().ToLower();
             GameIds = new List<int>();
         }
+
+        public Collection(){}
     }
 }
