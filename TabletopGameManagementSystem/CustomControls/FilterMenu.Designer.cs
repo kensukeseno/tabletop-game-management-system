@@ -232,7 +232,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.FromArgb(12, 192, 223);
-            label7.Location = new Point(100, 41);
+            label7.Location = new Point(103, 41);
             label7.Name = "label7";
             label7.Size = new Size(104, 34);
             label7.TabIndex = 28;

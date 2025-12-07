@@ -38,33 +38,13 @@ namespace TabletopGameManagementSystem.CustomControls.Views
 
         private void ApplyFilter(FilterCriteria criteria)
         {
-            if (_lastCriteria != null && AreCriteriaEqual(_lastCriteria, criteria))
+            if (_lastCriteria != null && _lastCriteria.IsIdentical(criteria))
                 return; // no change, don't bother filtering
 
             var filteredGames = _gameLibrary.FindGames(criteria);
             gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>()); // load filtered list
 
             _lastCriteria = criteria; // update last used criteria
-        }
-
-        private bool AreCriteriaEqual(FilterCriteria a, FilterCriteria b)
-        {
-            bool categoriesEqual = false;
-
-            if (a.Categories == null && b.Categories == null)
-                categoriesEqual = true;
-            else if (a.Categories != null && b.Categories != null)
-                categoriesEqual = a.Categories.SequenceEqual(b.Categories);
-
-            return a.NameContains == b.NameContains &&
-                   a.MinPlayers == b.MinPlayers &&
-                   a.MaxPlayers == b.MaxPlayers &&
-                   a.PlayingTime == b.PlayingTime &&
-                   a.AgeSuitability == b.AgeSuitability &&
-                   a.IsWishlisted == b.IsWishlisted &&
-                   a.IsOwned == b.IsOwned &&
-                   a.IsFavorite == b.IsFavorite &&
-                   categoriesEqual;
         }
 
         private void btnAddNewGame_Click(object sender, EventArgs e)
