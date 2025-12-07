@@ -19,19 +19,15 @@ namespace TabletopGameManagementSystem.CustomControls
 
         public event Action<FilterCriteria> OnFilterApplied;
 
-        public FilterMenu() : this(null) { } // so designer won't get angry!
-        public FilterMenu(IGameLibrary gameLibrary)
+        
+        public FilterMenu()
         {
             InitializeComponent();
             
-            _gameLibrary = gameLibrary;
-            if (_gameLibrary != null)
-            {
-                var categories = _gameLibrary.GetAllCategories() ?? new List<string>();
-                clbCategories.Items.Clear();
-                clbCategories.Items.AddRange(categories.ToArray());
-            }
-
+            IGameLibrary _gameLibrary = new SQLGameLibrary();
+            var categories = _gameLibrary.GetAllCategories() ?? new List<string>();
+            clbCategories.Items.Clear();
+            clbCategories.Items.AddRange(categories.ToArray());
 
         }
 

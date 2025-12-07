@@ -15,6 +15,8 @@ namespace TabletopGameManagementSystem.CustomControls
 {
     public partial class GameCardContainer : UserControl
     {
+        public event Action GameRemovedFromContainer;
+
         public GameCardContainer()
         {
             InitializeComponent();
@@ -34,7 +36,7 @@ namespace TabletopGameManagementSystem.CustomControls
                 card.GameRemoved += (s, removedGame) =>
                 {
                     var allGames = gameLibrary.GetAllGames();
-                    LoadGames(gameLibrary, allGames); // reload with same instance
+                    GameRemovedFromContainer?.Invoke();
                 };
 
                 this.Controls.Add(card);

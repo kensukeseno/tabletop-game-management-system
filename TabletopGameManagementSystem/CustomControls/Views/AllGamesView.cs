@@ -23,15 +23,14 @@ namespace TabletopGameManagementSystem.CustomControls.Views
 
             _gameLibrary = gameLibrary;
 
-            games_layoutPanel.Controls.Remove(filterMenu1);
-            filterMenu1 = new FilterMenu(_gameLibrary);
             filterMenu1.OnFilterApplied += ApplyFilter;
-            games_layoutPanel.Controls.Add(filterMenu1);
-
 
             // load everything first
             var allGames = _gameLibrary.GetAllGames();
             gameCardContainer1.LoadGames(_gameLibrary, allGames);
+
+            // lambda to listen for removals bubbled up from container
+            gameCardContainer1.GameRemovedFromContainer += () => RefreshGames();
 
             // Store initial criteria as null
             _lastCriteria = null;
@@ -67,5 +66,46 @@ namespace TabletopGameManagementSystem.CustomControls.Views
                    a.IsFavorite == b.IsFavorite &&
                    categoriesEqual;
         }
+
+        private void btnAddNewGame_Click(object sender, EventArgs e)
+        {
+            using (var form = new Form())
+            {
+                var addGameControl = new AddGame(_gameLibrary);
+                addGameControl.Dock = DockStyle.Fill;
+
+                // Wire up the event so we refresh after a game is added
+                addGameControl.OnGameAdded += game =>
+                {
+                    RefreshGames();
+                    form.DialogResult = DialogResult.OK;
+                    form.Close();
+                };
+
+                form.Controls.Add(addGameControl);
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.Size = new Size(500, 700); // Adjust as needed
+                form.Text = "Add New Game";
+
+                form.ShowDialog();
+            }
+
+        }
+
+        //helper to refresh current view
+        private void RefreshGames()
+        {
+            if (_lastCriteria != null)
+            {
+                var filteredGames = _gameLibrary.FindGames(_lastCriteria);
+                gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>());
+            }
+            else
+            {
+                var allGames = _gameLibrary.GetAllGames();
+                gameCardContainer1.LoadGames(_gameLibrary, allGames);
+            }
+        }
+
     }
 }

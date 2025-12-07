@@ -30,7 +30,6 @@
         {
             label1 = new Label();
             txtTitleFilter = new TextBox();
-            button2 = new Button();
             btnApply = new Button();
             chkOwned = new CheckBox();
             chkWishlist = new CheckBox();
@@ -45,6 +44,7 @@
             numAge = new NumericUpDown();
             clbCategories = new CheckedListBox();
             label6 = new Label();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)numMinPlayers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numMaxPlayers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numPlayingTime).BeginInit();
@@ -74,22 +74,6 @@
             txtTitleFilter.Size = new Size(257, 34);
             txtTitleFilter.TabIndex = 12;
             // 
-            // button2
-            // 
-            button2.Anchor = AnchorStyles.None;
-            button2.BackColor = Color.Transparent;
-            button2.FlatAppearance.BorderSize = 0;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            button2.ForeColor = Color.FromArgb(12, 192, 223);
-            button2.Location = new Point(27, 33);
-            button2.Margin = new Padding(0, 16, 0, 0);
-            button2.Name = "button2";
-            button2.Size = new Size(257, 53);
-            button2.TabIndex = 3;
-            button2.Text = "Filter";
-            button2.UseVisualStyleBackColor = false;
-            // 
             // btnApply
             // 
             btnApply.Anchor = AnchorStyles.Top;
@@ -100,7 +84,7 @@
             btnApply.FlatStyle = FlatStyle.Flat;
             btnApply.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnApply.ForeColor = Color.Black;
-            btnApply.Location = new Point(55, 534);
+            btnApply.Location = new Point(55, 510);
             btnApply.Margin = new Padding(0, 16, 0, 0);
             btnApply.Name = "btnApply";
             btnApply.Size = new Size(187, 40);
@@ -228,7 +212,7 @@
             clbCategories.FormattingEnabled = true;
             clbCategories.Location = new Point(27, 408);
             clbCategories.Name = "clbCategories";
-            clbCategories.Size = new Size(257, 114);
+            clbCategories.Size = new Size(257, 92);
             clbCategories.TabIndex = 26;
             // 
             // label6
@@ -242,6 +226,18 @@
             label6.TabIndex = 27;
             label6.Text = "Categories";
             // 
+            // label7
+            // 
+            label7.Anchor = AnchorStyles.None;
+            label7.AutoSize = true;
+            label7.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.FromArgb(12, 192, 223);
+            label7.Location = new Point(100, 41);
+            label7.Name = "label7";
+            label7.Size = new Size(104, 34);
+            label7.TabIndex = 28;
+            label7.Text = "Filter";
+            // 
             // FilterMenu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -249,6 +245,7 @@
             BackColor = Color.Transparent;
             BackgroundImage = Properties.Resources.dk_grey_square;
             BackgroundImageLayout = ImageLayout.Stretch;
+            Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(clbCategories);
             Controls.Add(label5);
@@ -263,13 +260,12 @@
             Controls.Add(chkWishlist);
             Controls.Add(btnApply);
             Controls.Add(chkOwned);
-            Controls.Add(button2);
             Controls.Add(txtTitleFilter);
             Controls.Add(label1);
             DoubleBuffered = true;
             Margin = new Padding(2, 3, 2, 3);
             Name = "FilterMenu";
-            Size = new Size(319, 625);
+            Size = new Size(319, 585);
             ((System.ComponentModel.ISupportInitialize)numMinPlayers).EndInit();
             ((System.ComponentModel.ISupportInitialize)numMaxPlayers).EndInit();
             ((System.ComponentModel.ISupportInitialize)numPlayingTime).EndInit();
@@ -282,7 +278,6 @@
 
         private Label label1;
         private TextBox txtTitleFilter;
-        private Button button2;
         private Button btnApply;
         private CheckBox chkOwned;
         private CheckBox chkWishlist;
@@ -297,5 +292,6 @@
         private NumericUpDown numAge;
         private CheckedListBox clbCategories;
         private Label label6;
+        private Label label7;
     }
 }

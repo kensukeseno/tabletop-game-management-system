@@ -177,8 +177,13 @@ namespace TabletopGameManagementSystem.Services
         // Return: None
         public void AddGame(Game game)
         {
+            var categoriesJson = JsonSerializer.Serialize(new
+            {
+                boardgamecategory = game.Categories
+            });
+
             string queryString =
-                $"INSERT INTO BoardGames VALUES('{game.Name}', '{game.Desc}',{game.Rank}, {game.MinPlayers}, {game.MaxPlayers}, {game.PlayingTime}, {game.AgeSuitability}, null, 0, 0, 0);";
+                $"INSERT INTO BoardGames VALUES('{game.Name}', '{game.Desc}',{game.Rank}, {game.MinPlayers}, {game.MaxPlayers}, {game.PlayingTime}, {game.AgeSuitability}, null, 0, 0, 0, '{categoriesJson}');";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
