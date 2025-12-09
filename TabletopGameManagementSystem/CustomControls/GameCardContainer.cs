@@ -15,33 +15,40 @@ namespace TabletopGameManagementSystem.CustomControls
 {
     public partial class GameCardContainer : UserControl
     {
+        public event Action GameRemovedFromContainer;
+
         public GameCardContainer()
         {
             InitializeComponent();
         }
 
-        public void LoadGames(List<Game> games)
+        public void LoadGames(IGameLibrary gameLibrary, List<Game> games)
         {
             this.Controls.Clear();
 
             foreach (var game in games)
             {
-                var card = new GameCardFull();
+                var card = new GameCardFull(gameLibrary); // I want GameCardFull to use the same gameLibrary instance - consistency is key
                 card.SetGame(game);
                 card.Dock = DockStyle.Top;
 
-                card.GameRemoved += Card_GameRemoved; //subscribe to event
+                // inline lambda keeps gameLibrary in scope
+                card.GameRemoved += (s, removedGame) =>
+                {
+                    var allGames = gameLibrary.GetAllGames();
+                    GameRemovedFromContainer?.Invoke();
+                };
 
                 this.Controls.Add(card);
             }
         }
 
-        private void Card_GameRemoved(object sender, Game game)
-        {
-            // reload the list after removal
-            var allGames = new GameLibrary().GetAllGames();
-            LoadGames(allGames);
-        }
+        //private void Card_GameRemoved(object sender, Game game)
+        //{
+        //    // reload the list after removal
+        //    var allGames = new GameLibrary().GetAllGames();
+        //    LoadGames(_gameLibrary, allGames);
+        //}
 
 
     }

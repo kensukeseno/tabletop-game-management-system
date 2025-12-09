@@ -1,6 +1,4 @@
-﻿//handles JSON load, save, filtering, and basic operations on games & collections
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -13,7 +11,7 @@ using System.Diagnostics;
 
 namespace TabletopGameManagementSystem.Services
 {
-    internal class GameLibrary
+    internal class JsonGameLibrary : IGameLibrary
     {
         private static string _binDirectory = AppDomain.CurrentDomain.BaseDirectory;
         private static string _boardgamefilePath = Path.Combine(_binDirectory, "Data/boardgames.json");
@@ -25,7 +23,7 @@ namespace TabletopGameManagementSystem.Services
         // Get all games data from the boardgames json file
         // Param: None
         // Return: List<Game>
-        public List<Game> GetAllGames() 
+        public List<Game> GetAllGames()
         {
             try
             {
@@ -111,33 +109,27 @@ namespace TabletopGameManagementSystem.Services
                 {
                     games = games.Where(game => game.Name.ToLower().Contains(name.Trim().ToLower())).ToList();
                 }
-                if(minPlayers != 0)
+                if (minPlayers != 0)
                 {
-                    games = games.Where(game => game.MinPlayers >= minPlayers).ToList();
+                    games = games.Where(game => game.MinPlayers == minPlayers).ToList();
                 }
                 if (maxPlayers != 0)
                 {
-                    games = games.Where(game => game.MaxPlayers <= maxPlayers).ToList();
+                    games = games.Where(game => game.MaxPlayers == maxPlayers).ToList();
                 }
                 if (playingTime != 0)
                 {
                     games = games.Where(game => game.PlayingTime <= playingTime).ToList();
                 }
-                if (categories != null)
+                if (categories?.Any() == true)
                 {
-                    games = games.Where(game => 
-                        {
-                            foreach (var category in categories) {
-                                if(game.Categories.Contains(category)) return true;
-                            }
-                            return false;
-                        }).ToList();
+                    games = games.Where(game => categories.Any(category => game.Categories.Contains(category))).ToList();
                 }
                 if (ageSuitability != 0)
                 {
-                    games = games.Where(game => game.AgeSuitability >= ageSuitability).ToList();
+                    games = games.Where(game => game.AgeSuitability <= ageSuitability).ToList();
                 }
-                if (isWishlisted) 
+                if (isWishlisted)
                 {
                     games = games.Where(game => game.IsWishlisted).ToList();
                 }
@@ -282,7 +274,7 @@ namespace TabletopGameManagementSystem.Services
             {
                 string jsonString = File.ReadAllText(_collectionfilePath);
                 List<Collection> collections = JsonSerializer.Deserialize<List<Collection>>(jsonString);
-                
+
                 List<Collection> deletedCollections = collections.Where(collection => collection.ID != id).ToList();
 
                 jsonString = JsonSerializer.Serialize(deletedCollections);
@@ -479,6 +471,7 @@ namespace TabletopGameManagementSystem.Services
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
+
 
     }
 }

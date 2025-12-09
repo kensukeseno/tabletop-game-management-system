@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SelectorView));
             selector_layoutPanel = new TableLayoutPanel();
-            gameSelector1 = new GameSelector();
+            gameSelector1 = new GameSelector(_gameLibrary);
             selectorMenu1 = new SelectorMenu();
             selector_layoutPanel.SuspendLayout();
             SuspendLayout();

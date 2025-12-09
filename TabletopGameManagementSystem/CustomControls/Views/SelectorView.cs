@@ -13,20 +13,33 @@ namespace TabletopGameManagementSystem.CustomControls.Views
 {
     public partial class SelectorView : UserControl
     {
-        private GameLibrary _library;
 
-        CheckedListBox categoryCheckedListBox;   
-        CheckedListBox collectionCheckedListBox;
+        private readonly IGameLibrary _gameLibrary;
 
-        internal SelectorView(GameLibrary library)
+        // Designer-friendly constructor
+        public SelectorView() : this(null) { }
+
+        // Main constructor with dependency injection
+        public SelectorView(IGameLibrary gameLibrary)
         {
             InitializeComponent();
-            //selectorMenu1.Initialize(library);
+            _gameLibrary = gameLibrary;
+
+            selectorMenu1.Setup(_gameLibrary);
+
+            // Hook up events
+            gameSelector1.Initialize(_gameLibrary);
+            selectorMenu1.LoadOptions(_gameLibrary);
+
             gameSelector1.SpinButtonClicked += GameSelector1_SpinButtonClicked;
+
         }
 
+        // Event handler for Spin button
         private void GameSelector1_SpinButtonClicked(object sender, EventArgs e)
         {
+            if (selectorMenu1 == null) return;
+
             // Collect current criteria from SelectorMenu
             var criteria = selectorMenu1.BuildCriteria();
 
@@ -34,4 +47,5 @@ namespace TabletopGameManagementSystem.CustomControls.Views
             gameSelector1.ReceiveCriteria(criteria);
         }
     }
+
 }

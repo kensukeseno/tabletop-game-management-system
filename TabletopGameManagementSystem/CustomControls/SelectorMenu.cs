@@ -15,26 +15,36 @@ namespace TabletopGameManagementSystem.CustomControls
 {
     public partial class SelectorMenu : UserControl
     {
-        private GameLibrary _library;
+        internal IGameLibrary _library;
 
         public SelectorMenu()
         {
             InitializeComponent();
         }
 
-        /*public void Initialize(GameLibrary library)
+        public void Setup(IGameLibrary library)
         {
             _library = library;
-            LoadOptions(library);
 
-            // Default values
+            // Populate checklists
+            if (_library != null)
+            {
+                LoadOptions(_library);
+            }
+
+            // Set default numeric values
             numericUpDownPlayers.Value = 1;
             numericUpDownAge.Value = 12;
             numericUpDownPlayTime.Value = 60;
             numericUpDownGameCount.Value = 4;
-        }
-        */
 
+            // Pre-select all categories
+            for (int i = 0; i < categoryCheckedListBox.Items.Count; i++)
+            {
+                categoryCheckedListBox.SetItemChecked(i, true);
+            }
+  
+        }
 
         // Event fired when user presses the spin button
         public event Action<SelectorCriteria> OnCriteriaCollected;
@@ -83,30 +93,20 @@ namespace TabletopGameManagementSystem.CustomControls
                 .ToList();
         }
 
-        internal void LoadOptions(GameLibrary library)
+        internal void LoadOptions(IGameLibrary library)
         {
-            var allGames = library.GetAllGames();
+            if (library == null) return;
 
-            var categories = allGames
-                .SelectMany(g => g.Categories ?? new List<string>())
-                .Distinct()
-                .OrderBy(c => c)
-                .ToList();
-
+            // Fill categories
+            var categories = library.GetAllCategories()?.OrderBy(c => c).ToList() ?? new List<string>();
             categoryCheckedListBox.Items.Clear();
             foreach (var cat in categories)
                 categoryCheckedListBox.Items.Add(cat);
 
-            // Fill collections
-            var collections = library.GetAllCollections()
-                ?.Select(c => c.Name)
-                .OrderBy(c => c)
-                .ToList() ?? new List<string>();
+            // select all categories by default
+            for (int i = 0; i < categoryCheckedListBox.Items.Count; i++)
+                categoryCheckedListBox.SetItemChecked(i, true);
 
-            collectionCheckedListBox.Items.Clear();
-            foreach (var col in collections)
-                collectionCheckedListBox.Items.Add(col);
         }
-
     }
 }

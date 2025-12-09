@@ -27,15 +27,18 @@ namespace TabletopGameManagementSystem.CustomControls.Views
             _criteria = criteria;
         }
 
-        private GameLibrary _library = new GameLibrary();
+        private IGameLibrary _library;
 
-        public GameSelector()
+        public GameSelector(IGameLibrary library)
         {
             InitializeComponent();
-
             spin_btn.Click += spin_btn_Click;
         }
 
+        public void Initialize(IGameLibrary library)
+        {
+            _library = library;
+        }
 
         public event EventHandler SpinButtonClicked;
 

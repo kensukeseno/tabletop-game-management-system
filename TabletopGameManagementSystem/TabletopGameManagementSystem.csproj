@@ -33,6 +33,8 @@
 
 	  <ItemGroup>
 		  <Folder Include="Helpers\" />
+		  <PackageReference Include="Microsoft.Data.SqlClient" Version="6.1.3" />
+		  <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
 
 		  <None Update="Data\boardgames.json">
 			  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
