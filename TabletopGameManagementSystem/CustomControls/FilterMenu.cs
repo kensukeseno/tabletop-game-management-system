@@ -9,23 +9,35 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TabletopGameManagementSystem.Models;
 using static System.Net.Mime.MediaTypeNames;
+using TabletopGameManagementSystem.Services;
 
 namespace TabletopGameManagementSystem.CustomControls
 {
-
-
     public partial class FilterMenu : UserControl
     {
-        // Event that sends a filter back to the parent view
+        private readonly IGameLibrary _gameLibrary;
+
         public event Action<FilterCriteria> OnFilterApplied;
 
+        
         public FilterMenu()
         {
             InitializeComponent();
+            
+            IGameLibrary _gameLibrary = new SQLGameLibrary();
+            var categories = _gameLibrary.GetAllCategories() ?? new List<string>();
+            clbCategories.Items.Clear();
+            clbCategories.Items.AddRange(categories.ToArray());
+
         }
 
         private void btnApply_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(numMinPlayers.Text)) numMinPlayers.Value = 0;
+            if (string.IsNullOrWhiteSpace(numMaxPlayers.Text)) numMaxPlayers.Value = 0;
+            if (string.IsNullOrWhiteSpace(numPlayingTime.Text)) numPlayingTime.Value = 0;
+            if (string.IsNullOrWhiteSpace(numAge.Text)) numAge.Value = 0;
+
             var criteria = new FilterCriteria
             {
                 NameContains = txtTitleFilter.Text.Trim(),
@@ -35,7 +47,8 @@ namespace TabletopGameManagementSystem.CustomControls
                 AgeSuitability = (int)numAge.Value,
                 IsWishlisted = chkWishlist.Checked,
                 IsOwned = chkOwned.Checked,
-                IsFavorite = chkFavorite.Checked
+                IsFavorite = chkFavorite.Checked,
+                Categories = clbCategories.CheckedItems.Cast<string>().ToList()
             };
 
             OnFilterApplied?.Invoke(criteria);

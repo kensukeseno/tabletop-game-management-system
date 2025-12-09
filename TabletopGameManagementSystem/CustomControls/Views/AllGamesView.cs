@@ -14,21 +14,23 @@ namespace TabletopGameManagementSystem.CustomControls.Views
 {
     public partial class AllGamesView : UserControl
     {
-        private GameLibrary _gameLibrary;
+        private readonly IGameLibrary _gameLibrary;
+
         private FilterCriteria _lastCriteria; //keep track of last used
-        public AllGamesView(List<Game> gameslist)
+        public AllGamesView(IGameLibrary gameLibrary)
         {
             InitializeComponent();
 
-            _gameLibrary = new GameLibrary();
+            _gameLibrary = gameLibrary;
 
-            // FilterMenu event
             filterMenu1.OnFilterApplied += ApplyFilter;
 
             // load everything first
-            var allGames = new List<Game>();
-            allGames = _gameLibrary.GetAllGames();
-            gameCardContainer1.LoadGames(allGames);
+            var allGames = _gameLibrary.GetAllGames();
+            gameCardContainer1.LoadGames(_gameLibrary, allGames);
+
+            // lambda to listen for removals bubbled up from container
+            gameCardContainer1.GameRemovedFromContainer += () => RefreshGames();
 
             // Store initial criteria as null
             _lastCriteria = null;
@@ -36,25 +38,54 @@ namespace TabletopGameManagementSystem.CustomControls.Views
 
         private void ApplyFilter(FilterCriteria criteria)
         {
-            if (_lastCriteria != null && AreCriteriaEqual(_lastCriteria, criteria))
+            if (_lastCriteria != null && _lastCriteria.IsIdentical(criteria))
                 return; // no change, don't bother filtering
 
             var filteredGames = _gameLibrary.FindGames(criteria);
-            gameCardContainer1.LoadGames(filteredGames ?? new List<Game>()); // load filtered list
+            gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>()); // load filtered list
 
             _lastCriteria = criteria; // update last used criteria
         }
 
-        private bool AreCriteriaEqual(FilterCriteria a, FilterCriteria b)
+        private void btnAddNewGame_Click(object sender, EventArgs e)
         {
-            return a.NameContains == b.NameContains &&
-                   a.MinPlayers == b.MinPlayers &&
-                   a.MaxPlayers == b.MaxPlayers &&
-                   a.PlayingTime == b.PlayingTime &&
-                   a.AgeSuitability == b.AgeSuitability &&
-                   a.IsWishlisted == b.IsWishlisted &&
-                   a.IsOwned == b.IsOwned &&
-                   a.IsFavorite == b.IsFavorite;
+            using (var form = new Form())
+            {
+                var addGameControl = new AddGame(_gameLibrary);
+                addGameControl.Dock = DockStyle.Fill;
+
+                // Wire up the event so we refresh after a game is added
+                addGameControl.OnGameAdded += game =>
+                {
+                    RefreshGames();
+                    form.DialogResult = DialogResult.OK;
+                    form.Close();
+                };
+
+                form.Controls.Add(addGameControl);
+                form.StartPosition = FormStartPosition.CenterParent;
+                form.Size = new Size(500, 700); // Adjust as needed
+                form.Text = "Add New Game";
+
+                form.ShowDialog();
+            }
+
         }
+
+        //helper to refresh current view
+        private void RefreshGames()
+        {
+            if (_lastCriteria != null)
+            {
+                var filteredGames = _gameLibrary.FindGames(_lastCriteria);
+                gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>());
+            }
+            else
+            {
+                var allGames = _gameLibrary.GetAllGames();
+                gameCardContainer1.LoadGames(_gameLibrary, allGames);
+            }
+        }
+
     }
 }
