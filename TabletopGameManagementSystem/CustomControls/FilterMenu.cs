@@ -53,5 +53,18 @@ namespace TabletopGameManagementSystem.CustomControls
 
             OnFilterApplied?.Invoke(criteria);
         }
+
+        public void SetMyShelfMode()
+        {
+            chkOwned.Visible = false;
+            chkFavorite.Location = new Point(chkOwned.Location.X, chkOwned.Location.Y);
+        }
+
+        public void SetWishlistMode()
+        {
+            chkWishlist.Visible = false;
+            chkFavorite.Location = new Point(chkWishlist.Location.X, chkWishlist.Location.Y);
+        }
+
     }
 }

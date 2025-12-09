@@ -205,6 +205,7 @@
             cbMyShelf.TabIndex = 0;
             cbMyShelf.Text = "MyShelf";
             cbMyShelf.UseVisualStyleBackColor = true;
+            cbMyShelf.Visible = false;
             cbMyShelf.CheckedChanged += cbMyShelf_CheckedChanged;
             // 
             // btnRemove
@@ -233,7 +234,6 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
-            BackgroundImage = Properties.Resources.dk_grey_square;
             BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(gameCard_panel);
             DoubleBuffered = true;

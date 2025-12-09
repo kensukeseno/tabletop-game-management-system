@@ -27,7 +27,7 @@ namespace TabletopGameManagementSystem.CustomControls.Views
 
             // load everything first
             var allGames = _gameLibrary.GetAllGames();
-            gameCardContainer1.LoadGames(_gameLibrary, allGames);
+            gameCardContainer1.LoadGames(_gameLibrary, allGames, CardMode.AllGames);
 
             // lambda to listen for removals bubbled up from container
             gameCardContainer1.GameRemovedFromContainer += () => RefreshGames();
@@ -42,7 +42,7 @@ namespace TabletopGameManagementSystem.CustomControls.Views
                 return; // no change, don't bother filtering
 
             var filteredGames = _gameLibrary.FindGames(criteria);
-            gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>()); // load filtered list
+            gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>(), CardMode.AllGames); // load filtered list
 
             _lastCriteria = criteria; // update last used criteria
         }
@@ -78,12 +78,12 @@ namespace TabletopGameManagementSystem.CustomControls.Views
             if (_lastCriteria != null)
             {
                 var filteredGames = _gameLibrary.FindGames(_lastCriteria);
-                gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>());
+                gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>(), CardMode.AllGames);
             }
             else
             {
                 var allGames = _gameLibrary.GetAllGames();
-                gameCardContainer1.LoadGames(_gameLibrary, allGames);
+                gameCardContainer1.LoadGames(_gameLibrary, allGames, CardMode.AllGames);
             }
         }
 
