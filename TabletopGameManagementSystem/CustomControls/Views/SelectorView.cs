@@ -13,6 +13,7 @@ namespace TabletopGameManagementSystem.CustomControls.Views
 {
     public partial class SelectorView : UserControl
     {
+
         private readonly IGameLibrary _gameLibrary;
 
         // Designer-friendly constructor
@@ -23,6 +24,27 @@ namespace TabletopGameManagementSystem.CustomControls.Views
         {
             InitializeComponent();
             _gameLibrary = gameLibrary;
+
+            selectorMenu1.Setup(_gameLibrary);
+
+            // Hook up events
+            gameSelector1.Initialize(_gameLibrary);
+            selectorMenu1.LoadOptions(_gameLibrary);
+
+            gameSelector1.SpinButtonClicked += GameSelector1_SpinButtonClicked;
+
+        }
+
+        // Event handler for Spin button
+        private void GameSelector1_SpinButtonClicked(object sender, EventArgs e)
+        {
+            if (selectorMenu1 == null) return;
+
+            // Collect current criteria from SelectorMenu
+            var criteria = selectorMenu1.BuildCriteria();
+
+            // Pass criteria to GameSelector
+            gameSelector1.ReceiveCriteria(criteria);
         }
     }
 

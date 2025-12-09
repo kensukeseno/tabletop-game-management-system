@@ -14,7 +14,7 @@ namespace TabletopGameManagementSystem.Services
 {
     internal class SQLGameLibrary : IGameLibrary
     {
-        private string _connectionString = "Data Source=ANDREILAQUI\\SQLEXPRESS;Initial Catalog=TurnTable;"
+        private string _connectionString = "Data Source=SHADEKNIGHTLY\\SQLEXPRESS;Initial Catalog=TurnTable;"
                 + "Integrated Security=true;TrustServerCertificate=True";
 
         // Get all games data from the boardgames json file
