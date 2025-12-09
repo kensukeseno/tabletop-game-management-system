@@ -17,7 +17,6 @@ namespace TabletopGameManagementSystem.CustomControls.Views
         private readonly IGameLibrary _gameLibrary;
         private FilterCriteria _lastCriteria;
 
-
         public MyShelfView() : this(null) { } // so designer won't get angry!
 
         public MyShelfView(IGameLibrary gameLibrary)
@@ -27,9 +26,11 @@ namespace TabletopGameManagementSystem.CustomControls.Views
             _gameLibrary = gameLibrary;
 
             filterMenu1.OnFilterApplied += ApplyFilter;
+            filterMenu1.SetMyShelfMode();
+
 
             var ownedGames = _gameLibrary.FindGames(new FilterCriteria { IsOwned = true });
-            gameCardContainer1.LoadGames(_gameLibrary, ownedGames);
+            gameCardContainer1.LoadGames(_gameLibrary, ownedGames, CardMode.MyShelf);
 
             // listen for removals
             gameCardContainer1.GameRemovedFromContainer += () => RefreshGames();
@@ -43,14 +44,14 @@ namespace TabletopGameManagementSystem.CustomControls.Views
                 return;
 
             var filteredGames = _gameLibrary.FindGames(criteria);
-            gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>());
+            gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>(), CardMode.MyShelf);
             _lastCriteria = criteria;
         }
 
         private void RefreshGames()
         {
             var filteredGames = _gameLibrary.FindGames(_lastCriteria ?? new FilterCriteria { IsOwned = true });
-            gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>());
+            gameCardContainer1.LoadGames(_gameLibrary, filteredGames ?? new List<Game>(), CardMode.MyShelf);
         }
 
 

@@ -15,15 +15,18 @@ namespace TabletopGameManagementSystem.CustomControls
 {
     public partial class GameCardFull : UserControl
     {
+        private CardMode _mode = CardMode.AllGames;
         private Game _game;
         private readonly IGameLibrary _gameLibrary;
 
+        private static readonly Image CachedBackground = Properties.Resources.dk_grey_square; //cache background image for performance
         public event EventHandler<Game> GameRemoved; // bubble up event
 
         public GameCardFull(IGameLibrary gameLibrary)
         {
             InitializeComponent();
             _gameLibrary = gameLibrary;
+            this.BackgroundImage = CachedBackground;
         }
 
         public void SetGame(Game game)
@@ -42,7 +45,41 @@ namespace TabletopGameManagementSystem.CustomControls
             AddDetailRow("Playing Time", $"{game.PlayingTime} mins");
             AddDetailRow("Age", $"{game.AgeSuitability}+");
             AddDetailRow("Description", game.Desc);
+
         }
+
+        public void SetMode(CardMode mode)
+        {
+            _mode = mode;
+
+            switch (mode)
+            {
+                case CardMode.AllGames:
+                    cbMyShelf.Visible = true;
+                    cbWishlist.Visible = true;
+                    btnRemove.Text = "Delete";
+                    break;
+
+                case CardMode.MyShelf:
+                    cbMyShelf.Visible = false;
+                    cbWishlist.Visible = true;
+                    btnRemove.Text = "Remove";
+                    break;
+
+                case CardMode.Wishlist:
+                    cbMyShelf.Visible = true;
+                    cbWishlist.Visible = false;
+                    btnRemove.Text = "Remove";
+                    break;
+
+                case CardMode.Collection:
+                    cbMyShelf.Visible = false;
+                    cbWishlist.Visible = false;
+                    btnRemove.Text = "Add";
+                    break;
+            }
+        }
+
 
         private void AddDetailRow(string heading, string value)
         {
@@ -86,14 +123,68 @@ namespace TabletopGameManagementSystem.CustomControls
         {
             if (_game == null) return;
 
-            var confirm = MessageBox.Show( $"Are you sure you want to remove {_game.Name}?", "Confirm Delete", MessageBoxButtons.YesNo,MessageBoxIcon.Warning);
+            switch (_mode)
+            {
+                case CardMode.AllGames:
+                    RemoveFromDatabase();
+                    break;
+
+                case CardMode.MyShelf:
+                    UnOwnGame();
+                    GameRemoved?.Invoke(this, _game);
+                    break;
+
+                case CardMode.Wishlist:
+                    UnWishlistGame();
+                    GameRemoved?.Invoke(this, _game);
+                    break;
+
+                case CardMode.Collection:
+                    GameRemoved?.Invoke(this, _game);
+                    break;
+            }
+
+        }
+
+
+
+
+        private void RemoveFromDatabase()
+        {
+            var confirm = MessageBox.Show($"Are you sure you want to remove {_game.Name}?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (confirm == DialogResult.Yes)
             {
                 _gameLibrary.DeleteGame(_game.ID);
                 GameRemoved?.Invoke(this, _game); // notify container
             }
-
         }
+
+        private void UnOwnGame()
+        {
+            var confirm = MessageBox.Show($"Are you sure you want to remove {_game.Name} from your shelf?", "Confirm Removal", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                _gameLibrary.ToggleOwned(_game.ID, false);
+                _game.IsOwned = false;
+                GameRemoved?.Invoke(this, _game);
+            }
+        }
+
+        private void UnWishlistGame()
+        {
+            var confirm = MessageBox.Show($"Are you sure you want to remmove {_game.Name} from your wishlist?", "Confirm Removal", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                _gameLibrary.ToggleWishlisted(_game.ID, false);
+                _game.IsWishlisted = false;
+                GameRemoved?.Invoke(this, _game);
+            }
+        }
+
+
+
     }
 }
