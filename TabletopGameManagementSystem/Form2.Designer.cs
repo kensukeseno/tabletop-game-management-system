@@ -33,8 +33,8 @@
             headerPanel = new TableLayoutPanel();
             pictureBox1 = new PictureBox();
             titleLabel = new Label();
-            navMenu1 = new TabletopGameManagementSystem.CustomControls.NavMenu();
             panelMain = new Panel();
+            navMenu1 = new TabletopGameManagementSystem.CustomControls.NavMenu();
             form2Panel.SuspendLayout();
             headerPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -46,16 +46,15 @@
             form2Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 23.6047573F));
             form2Panel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 76.39524F));
             form2Panel.Controls.Add(headerPanel, 1, 0);
-            form2Panel.Controls.Add(navMenu1, 0, 1);
             form2Panel.Controls.Add(panelMain, 1, 1);
+            form2Panel.Controls.Add(navMenu1, 0, 1);
             form2Panel.Dock = DockStyle.Fill;
             form2Panel.Location = new Point(0, 0);
-            form2Panel.Margin = new Padding(3, 4, 3, 4);
             form2Panel.Name = "form2Panel";
             form2Panel.RowCount = 2;
             form2Panel.RowStyles.Add(new RowStyle(SizeType.Percent, 26.0586319F));
             form2Panel.RowStyles.Add(new RowStyle(SizeType.Percent, 73.94137F));
-            form2Panel.Size = new Size(1249, 819);
+            form2Panel.Size = new Size(1093, 614);
             form2Panel.TabIndex = 0;
             // 
             // headerPanel
@@ -66,12 +65,11 @@
             headerPanel.Controls.Add(pictureBox1, 1, 0);
             headerPanel.Controls.Add(titleLabel, 0, 0);
             headerPanel.Dock = DockStyle.Fill;
-            headerPanel.Location = new Point(297, 4);
-            headerPanel.Margin = new Padding(3, 4, 3, 4);
+            headerPanel.Location = new Point(261, 3);
             headerPanel.Name = "headerPanel";
             headerPanel.RowCount = 1;
             headerPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            headerPanel.Size = new Size(949, 205);
+            headerPanel.Size = new Size(829, 154);
             headerPanel.TabIndex = 0;
             // 
             // pictureBox1
@@ -79,10 +77,10 @@
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.BackgroundImage = Properties.Resources.record_logo_teal;
             pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(640, 3);
-            pictureBox1.Margin = new Padding(2, 3, 2, 3);
+            pictureBox1.Location = new Point(560, 2);
+            pictureBox1.Margin = new Padding(2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(307, 199);
+            pictureBox1.Size = new Size(267, 150);
             pictureBox1.TabIndex = 6;
             pictureBox1.TabStop = false;
             // 
@@ -92,12 +90,21 @@
             titleLabel.AutoSize = true;
             titleLabel.Font = new Font("Broadway", 36F, FontStyle.Regular, GraphicsUnit.Point, 0);
             titleLabel.ForeColor = Color.FromArgb(12, 192, 223);
-            titleLabel.Location = new Point(314, 137);
-            titleLabel.Margin = new Padding(2, 0, 40, 0);
+            titleLabel.Location = new Point(295, 99);
+            titleLabel.Margin = new Padding(2, 0, 35, 0);
             titleLabel.Name = "titleLabel";
-            titleLabel.Size = new Size(284, 68);
+            titleLabel.Size = new Size(228, 55);
             titleLabel.TabIndex = 5;
             titleLabel.Text = "MyShelf";
+            // 
+            // panelMain
+            // 
+            panelMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            panelMain.Location = new Point(261, 162);
+            panelMain.Margin = new Padding(3, 2, 3, 2);
+            panelMain.Name = "panelMain";
+            panelMain.Size = new Size(829, 450);
+            panelMain.TabIndex = 2;
             // 
             // navMenu1
             // 
@@ -105,28 +112,20 @@
             navMenu1.BackColor = Color.Transparent;
             navMenu1.BackgroundImage = (Image)resources.GetObject("navMenu1.BackgroundImage");
             navMenu1.BackgroundImageLayout = ImageLayout.Stretch;
-            navMenu1.Location = new Point(2, 216);
-            navMenu1.Margin = new Padding(2, 3, 2, 3);
+            navMenu1.Location = new Point(2, 162);
+            navMenu1.Margin = new Padding(2, 2, 2, 2);
             navMenu1.Name = "navMenu1";
-            navMenu1.Size = new Size(290, 600);
-            navMenu1.TabIndex = 1;
-            // 
-            // panelMain
-            // 
-            panelMain.Location = new Point(297, 216);
-            panelMain.Name = "panelMain";
-            panelMain.Size = new Size(949, 600);
-            panelMain.TabIndex = 2;
+            navMenu1.Size = new Size(254, 450);
+            navMenu1.TabIndex = 3;
             // 
             // Form2
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Black;
-            ClientSize = new Size(1249, 819);
+            ClientSize = new Size(1093, 614);
             Controls.Add(form2Panel);
             Icon = (Icon)resources.GetObject("$this.Icon");
-            Margin = new Padding(3, 4, 3, 4);
             Name = "Form2";
             Text = "TurnTable";
             WindowState = FormWindowState.Maximized;
@@ -144,7 +143,7 @@
         private TableLayoutPanel headerPanel;
         private Label titleLabel;
         private PictureBox pictureBox1;
-        private CustomControls.NavMenu navMenu1;
         private Panel panelMain;
+        private CustomControls.NavMenu navMenu1;
     }
 }

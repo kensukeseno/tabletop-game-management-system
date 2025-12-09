@@ -61,7 +61,7 @@ namespace TabletopGameManagementSystem
                     titleLabel.Text = "All Games";
                     break;
                 case "Spin":
-                    view = new SelectorView();
+                    view = new SelectorView(_gameLibrary);
                     titleLabel.Text = "Game Selector";
                     break;
             }

@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AllGamesView));
             collections_layoutPanel = new TableLayoutPanel();
-            gameCardContainer1 = new GameCardContainer();
             filterMenu1 = new FilterMenu();
+            gameCardContainer1 = new GameCardContainer();
             collections_layoutPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -45,22 +45,11 @@
             collections_layoutPanel.Controls.Add(gameCardContainer1, 0, 0);
             collections_layoutPanel.Dock = DockStyle.Fill;
             collections_layoutPanel.Location = new Point(0, 0);
-            collections_layoutPanel.Margin = new Padding(3, 4, 3, 4);
             collections_layoutPanel.Name = "collections_layoutPanel";
             collections_layoutPanel.RowCount = 1;
             collections_layoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 28.57143F));
-            collections_layoutPanel.Size = new Size(1191, 651);
+            collections_layoutPanel.Size = new Size(1042, 488);
             collections_layoutPanel.TabIndex = 5;
-            // 
-            // gameCardContainer1
-            // 
-            gameCardContainer1.AutoScroll = true;
-            gameCardContainer1.BackColor = Color.Transparent;
-            gameCardContainer1.Location = new Point(2, 3);
-            gameCardContainer1.Margin = new Padding(2, 3, 2, 3);
-            gameCardContainer1.Name = "gameCardContainer1";
-            gameCardContainer1.Size = new Size(806, 645);
-            gameCardContainer1.TabIndex = 1;
             // 
             // filterMenu1
             // 
@@ -68,21 +57,31 @@
             filterMenu1.BackColor = Color.Transparent;
             filterMenu1.BackgroundImage = (Image)resources.GetObject("filterMenu1.BackgroundImage");
             filterMenu1.BackgroundImageLayout = ImageLayout.Stretch;
-            filterMenu1.Location = new Point(812, 3);
-            filterMenu1.Margin = new Padding(2, 3, 2, 3);
+            filterMenu1.Location = new Point(711, 2);
+            filterMenu1.Margin = new Padding(2, 2, 2, 2);
             filterMenu1.Name = "filterMenu1";
-            filterMenu1.Size = new Size(377, 645);
+            filterMenu1.Size = new Size(329, 484);
             filterMenu1.TabIndex = 0;
+            // 
+            // gameCardContainer1
+            // 
+            gameCardContainer1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            gameCardContainer1.AutoScroll = true;
+            gameCardContainer1.BackColor = Color.Transparent;
+            gameCardContainer1.Location = new Point(2, 2);
+            gameCardContainer1.Margin = new Padding(2, 2, 2, 2);
+            gameCardContainer1.Name = "gameCardContainer1";
+            gameCardContainer1.Size = new Size(705, 484);
+            gameCardContainer1.TabIndex = 1;
             // 
             // AllGamesView
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
             Controls.Add(collections_layoutPanel);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "AllGamesView";
-            Size = new Size(1191, 651);
+            Size = new Size(1042, 488);
             collections_layoutPanel.ResumeLayout(false);
             ResumeLayout(false);
         }

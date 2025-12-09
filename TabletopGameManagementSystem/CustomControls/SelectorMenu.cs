@@ -7,19 +7,106 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TabletopGameManagementSystem.CustomControls.Views;
+using TabletopGameManagementSystem.Models;
+using TabletopGameManagementSystem.Services;
 
 namespace TabletopGameManagementSystem.CustomControls
 {
     public partial class SelectorMenu : UserControl
     {
+        private GameLibrary _library;
+
         public SelectorMenu()
         {
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        /*public void Initialize(GameLibrary library)
         {
+            _library = library;
+            LoadOptions(library);
 
+            // Default values
+            numericUpDownPlayers.Value = 1;
+            numericUpDownAge.Value = 12;
+            numericUpDownPlayTime.Value = 60;
+            numericUpDownGameCount.Value = 4;
         }
+        */
+
+
+        // Event fired when user presses the spin button
+        public event Action<SelectorCriteria> OnCriteriaCollected;
+
+        public void CollectCriteriaAndRaiseEvent()
+        {
+            var criteria = BuildCriteria(); 
+            OnCriteriaCollected?.Invoke(criteria);
+        }
+
+
+
+        // ------------------------------------------------------------------
+        //                     Methods for user inputs
+        // ------------------------------------------------------------------
+        public SelectorCriteria BuildCriteria()
+        {
+            return new SelectorCriteria
+            {
+                PlayerCount = (int)numericUpDownPlayers.Value,
+                AgeSuitability = (int)numericUpDownAge.Value,
+                PlayingTime = (int)numericUpDownPlayTime.Value,
+                NumberOfGames = (int)numericUpDownGameCount.Value,
+
+                Categories = GetSelectedCategories(),
+                SelectedCollections = GetSelectedCollections(),
+
+                //OwnedOnly = true //temporarily ignore until myShelf is implimented
+            };
+        }
+
+
+        //get multiple selected categories from a CheckedListBox
+        public List<string> GetSelectedCategories()
+        {
+            return categoryCheckedListBox.CheckedItems
+                .Cast<string>()
+                .ToList();
+        }
+
+        //returns multiple selected collections
+        public List<string> GetSelectedCollections()
+        {
+            return collectionCheckedListBox.CheckedItems
+                .Cast<string>()
+                .ToList();
+        }
+
+        internal void LoadOptions(GameLibrary library)
+        {
+            var allGames = library.GetAllGames();
+
+            var categories = allGames
+                .SelectMany(g => g.Categories ?? new List<string>())
+                .Distinct()
+                .OrderBy(c => c)
+                .ToList();
+
+            categoryCheckedListBox.Items.Clear();
+            foreach (var cat in categories)
+                categoryCheckedListBox.Items.Add(cat);
+
+            // Fill collections
+            var collections = library.GetAllCollections()
+                ?.Select(c => c.Name)
+                .OrderBy(c => c)
+                .ToList() ?? new List<string>();
+
+            collectionCheckedListBox.Items.Clear();
+            foreach (var col in collections)
+                collectionCheckedListBox.Items.Add(col);
+        }
+
     }
 }

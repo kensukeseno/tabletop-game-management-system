@@ -53,9 +53,9 @@
             // 
             // gameSelector1
             // 
+            gameSelector1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             gameSelector1.BackColor = Color.Transparent;
             gameSelector1.BackgroundImageLayout = ImageLayout.Zoom;
-            gameSelector1.Dock = DockStyle.Fill;
             gameSelector1.Location = new Point(3, 3);
             gameSelector1.Name = "gameSelector1";
             gameSelector1.Size = new Size(703, 482);

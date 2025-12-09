@@ -1,4 +1,6 @@
-﻿using System;
+﻿//handles JSON load, save, filtering, and basic operations on games & collections
+
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -477,7 +479,6 @@ namespace TabletopGameManagementSystem.Services
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
-
 
     }
 }
