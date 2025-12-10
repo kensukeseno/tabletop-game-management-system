@@ -28,67 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CollectionsView));
-            collections_layoutPanel = new TableLayoutPanel();
-            collectionsMenu1 = new CollectionsMenu();
-            collectionDetailsMenu1 = new CollectionDetailsMenu();
-            collections_layoutPanel.SuspendLayout();
+            collectionContainer = new CollectionsContainer();
+            btnAddCollection = new Button();
+            btnRefresh = new Button();
             SuspendLayout();
             // 
-            // collections_layoutPanel
+            // collectionContainer
             // 
-            collections_layoutPanel.BackColor = Color.Transparent;
-            collections_layoutPanel.ColumnCount = 2;
-            collections_layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 68.04223F));
-            collections_layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.9577732F));
-            collections_layoutPanel.Controls.Add(collectionsMenu1, 0, 0);
-            collections_layoutPanel.Controls.Add(collectionDetailsMenu1, 1, 0);
-            collections_layoutPanel.Dock = DockStyle.Fill;
-            collections_layoutPanel.Location = new Point(0, 0);
-            collections_layoutPanel.Name = "collections_layoutPanel";
-            collections_layoutPanel.RowCount = 1;
-            collections_layoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 28.57143F));
-            collections_layoutPanel.Size = new Size(1042, 488);
-            collections_layoutPanel.TabIndex = 4;
+            collectionContainer.BackColor = Color.Transparent;
+            collectionContainer.Location = new Point(2, 132);
+            collectionContainer.Margin = new Padding(2, 3, 2, 3);
+            collectionContainer.Name = "collectionContainer";
+            collectionContainer.Size = new Size(847, 594);
+            collectionContainer.TabIndex = 0;
             // 
-            // collectionsMenu1
+            // btnAddCollection
             // 
-            collectionsMenu1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            collectionsMenu1.BackColor = Color.Transparent;
-            collectionsMenu1.BackgroundImage = (Image)resources.GetObject("collectionsMenu1.BackgroundImage");
-            collectionsMenu1.BackgroundImageLayout = ImageLayout.Stretch;
-            collectionsMenu1.Location = new Point(3, 3);
-            collectionsMenu1.Name = "collectionsMenu1";
-            collectionsMenu1.Size = new Size(703, 482);
-            collectionsMenu1.TabIndex = 0;
+            btnAddCollection.Anchor = AnchorStyles.None;
+            btnAddCollection.AutoSize = true;
+            btnAddCollection.BackColor = Color.Transparent;
+            btnAddCollection.BackgroundImage = Properties.Resources.grey_square;
+            btnAddCollection.BackgroundImageLayout = ImageLayout.Stretch;
+            btnAddCollection.FlatAppearance.BorderSize = 0;
+            btnAddCollection.FlatStyle = FlatStyle.Flat;
+            btnAddCollection.Font = new Font("Broadway", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnAddCollection.ForeColor = Color.Black;
+            btnAddCollection.Location = new Point(427, 83);
+            btnAddCollection.Margin = new Padding(0, 150, 0, 0);
+            btnAddCollection.Name = "btnAddCollection";
+            btnAddCollection.Size = new Size(209, 37);
+            btnAddCollection.TabIndex = 17;
+            btnAddCollection.Text = "New Collection";
+            btnAddCollection.TextAlign = ContentAlignment.BottomCenter;
+            btnAddCollection.UseVisualStyleBackColor = false;
+            btnAddCollection.Click += btnAddCollection_Click;
             // 
-            // collectionDetailsMenu1
+            // btnRefresh
             // 
-            collectionDetailsMenu1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            collectionDetailsMenu1.BackColor = Color.Transparent;
-            collectionDetailsMenu1.BackgroundImage = (Image)resources.GetObject("collectionDetailsMenu1.BackgroundImage");
-            collectionDetailsMenu1.BackgroundImageLayout = ImageLayout.Stretch;
-            collectionDetailsMenu1.Location = new Point(712, 3);
-            collectionDetailsMenu1.Name = "collectionDetailsMenu1";
-            collectionDetailsMenu1.Size = new Size(327, 482);
-            collectionDetailsMenu1.TabIndex = 1;
+            btnRefresh.Anchor = AnchorStyles.None;
+            btnRefresh.AutoSize = true;
+            btnRefresh.BackColor = Color.Transparent;
+            btnRefresh.BackgroundImage = Properties.Resources.grey_square;
+            btnRefresh.BackgroundImageLayout = ImageLayout.Stretch;
+            btnRefresh.FlatAppearance.BorderSize = 0;
+            btnRefresh.FlatStyle = FlatStyle.Flat;
+            btnRefresh.Font = new Font("Broadway", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRefresh.ForeColor = Color.Black;
+            btnRefresh.Location = new Point(636, 83);
+            btnRefresh.Margin = new Padding(0, 150, 0, 0);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(209, 37);
+            btnRefresh.TabIndex = 18;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.TextAlign = ContentAlignment.BottomCenter;
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // CollectionsView
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
-            Controls.Add(collections_layoutPanel);
+            Controls.Add(btnRefresh);
+            Controls.Add(collectionContainer);
+            Controls.Add(btnAddCollection);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "CollectionsView";
-            Size = new Size(1042, 488);
-            collections_layoutPanel.ResumeLayout(false);
+            Size = new Size(959, 729);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private TableLayoutPanel collections_layoutPanel;
-        private CollectionsMenu collectionsMenu1;
-        private CollectionDetailsMenu collectionDetailsMenu1;
+        private CollectionsContainer collectionContainer;
+        private Button btnAddCollection;
+        private Button btnRefresh;
     }
 }

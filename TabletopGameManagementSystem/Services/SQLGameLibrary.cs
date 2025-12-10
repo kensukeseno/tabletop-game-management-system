@@ -266,7 +266,7 @@ namespace TabletopGameManagementSystem.Services
         public void AddCollection(Collection collection)
         {
             string queryString =
-                $"INSERT INTO Collections (Name, GameIds) VALUES('{collection.Name}', '{{\"boardgameid\": []}}');";
+                $"INSERT INTO Collections (Name, Description, GameIds) VALUES('{collection.Name}', '{collection.Description ?? string.Empty}' , '{{\"boardgameid\": []}}');";
 
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -287,6 +287,36 @@ namespace TabletopGameManagementSystem.Services
                 }
             }
         }
+
+        // AL - update collection info
+        public void UpdateCollection(int id, string newName, string newDescription)
+        {
+            string queryString =
+                "UPDATE Collections SET Name = @newName, Description = @newDescription WHERE ID = @id;";
+
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                SqlCommand command = new SqlCommand(queryString, connection);
+                command.Parameters.AddWithValue("@newName", newName);
+                command.Parameters.AddWithValue("@newDescription", newDescription ?? string.Empty);
+                command.Parameters.AddWithValue("@id", id);
+
+                try
+                {
+                    connection.Open();
+                    int rowAffected = command.ExecuteNonQuery();
+                    if (rowAffected == 0)
+                    {
+                        throw new Exception("The collection data was not updated.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+        }
+
 
         // Delete a collection from the collections json file
         // Param: collection id

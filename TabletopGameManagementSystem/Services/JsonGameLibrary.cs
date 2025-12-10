@@ -265,6 +265,41 @@ namespace TabletopGameManagementSystem.Services
                 Console.WriteLine($"Error: {ex.Message}");
             }
         }
+
+
+        public void UpdateCollection(int id, string newName, string newDescription) {
+            try
+            {
+                // Read existing collections
+                string jsonString = File.ReadAllText(_collectionfilePath);
+                List<Collection> collections = JsonSerializer.Deserialize<List<Collection>>(jsonString);
+
+                // Find the target collection
+                var collection = collections.FirstOrDefault(c => c.ID == id);
+                if (collection != null)
+                {
+                    collection.Name = newName;
+                    collection.Description = newDescription;
+
+                    // Serialize back to JSON
+                    string newJsonString = JsonSerializer.Serialize(collections);
+                    File.WriteAllText(_collectionfilePath, newJsonString);
+
+                    Debug.WriteLine($"Updated collection {id} in {_collectionfilePath}");
+                }
+                else
+                {
+                    Console.WriteLine($"Collection with ID {id} not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error updating collection: {ex.Message}");
+            }
+
+        }
+
+
         // Delete a collection from the collections json file
         // Param: collection id
         // Return: None

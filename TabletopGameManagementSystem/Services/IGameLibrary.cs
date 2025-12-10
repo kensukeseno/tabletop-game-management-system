@@ -63,6 +63,11 @@ namespace TabletopGameManagementSystem.Services
         // Return: None
         public void DeleteCollection(int id);
 
+        // Ppdate a collection's details
+        // Param: collection id, name, description
+        // Return: None
+        public void UpdateCollection(int id, string newName, string newDescription);
+
         // Add a game to a collection
         // Param: game id, collection id
         // Return: None

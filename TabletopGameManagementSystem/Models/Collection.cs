@@ -16,6 +16,8 @@ namespace TabletopGameManagementSystem.Models
         [JsonPropertyName("name")]
         public string Name { get; set; }
         [JsonPropertyName("gameids")]
+        public string Description { get; set; }
+        [JsonPropertyName("description")]
         public List<int> GameIds { get; set; }
 
         public Collection(string name)
