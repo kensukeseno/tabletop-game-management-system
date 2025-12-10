@@ -46,7 +46,6 @@ namespace TabletopGameManagementSystem.CustomControls
             AddDetailRow("Playing Time", $"{game.PlayingTime} mins");
             AddDetailRow("Age", $"{game.AgeSuitability}+");
             AddDetailRow("Description", game.Desc);
-
         }
 
         public void SetMode(CardMode mode, int? collectionId = null)
@@ -94,14 +93,46 @@ namespace TabletopGameManagementSystem.CustomControls
             int rowIndex = innerGamedetailsPanel.RowCount++;
             innerGamedetailsPanel.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
-            var lblHeading = new Label { Text = heading, AutoSize = true, Font = new Font("Segoe UI", 9, FontStyle.Bold) };
-            var lblValue = new Label { Text = value, AutoSize = true };
-            lblValue.AutoEllipsis = true;
-            lblValue.MaximumSize = new Size(400, 200);
+            var lblHeading = new Label
+            {
+                Text = heading,
+                AutoSize = true,
+                Font = new Font("Segoe UI", 9, FontStyle.Bold)
+            };
+
+            Control valueControl;
+
+            // Special control for Description
+            if (heading == "Description")
+            {
+                valueControl = new TextBox
+                {
+                    Text = value,
+                    ReadOnly = true,
+                    Multiline = true,
+                    ScrollBars = ScrollBars.Vertical,
+                    WordWrap = true,
+                    Dock = DockStyle.Fill,
+                    Height = 120, // gives space before scrolling
+                    BorderStyle = BorderStyle.FixedSingle,
+                    BackColor = Color.DarkGray
+                };
+            }
+            else
+            {
+                valueControl = new Label
+                {
+                    Text = value,
+                    AutoSize = true,
+                    AutoEllipsis = true,
+                    MaximumSize = new Size(400, 200)
+                };
+            }
 
             innerGamedetailsPanel.Controls.Add(lblHeading, 0, rowIndex);
-            innerGamedetailsPanel.Controls.Add(lblValue, 1, rowIndex);
+            innerGamedetailsPanel.Controls.Add(valueControl, 1, rowIndex);
         }
+
 
         private void cbMyShelf_CheckedChanged(object sender, EventArgs e)
         {

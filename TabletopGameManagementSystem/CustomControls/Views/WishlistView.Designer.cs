@@ -42,48 +42,45 @@
             wishlist_layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 68.04223F));
             wishlist_layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.95777F));
             wishlist_layoutPanel.Controls.Add(gameCardContainer1, 0, 0);
-            wishlist_layoutPanel.Controls.Add(filterMenu1, 1, 1);
+            wishlist_layoutPanel.Controls.Add(filterMenu1, 1, 0);
             wishlist_layoutPanel.Dock = DockStyle.Fill;
             wishlist_layoutPanel.Location = new Point(0, 0);
-            wishlist_layoutPanel.Margin = new Padding(3, 4, 3, 4);
             wishlist_layoutPanel.Name = "wishlist_layoutPanel";
-            wishlist_layoutPanel.RowCount = 2;
+            wishlist_layoutPanel.RowCount = 1;
             wishlist_layoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 10F));
-            wishlist_layoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 90F));
-            wishlist_layoutPanel.Size = new Size(1191, 651);
+            wishlist_layoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            wishlist_layoutPanel.Size = new Size(1042, 488);
             wishlist_layoutPanel.TabIndex = 6;
             // 
             // gameCardContainer1
             // 
-            gameCardContainer1.AutoScroll = true;
+            gameCardContainer1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             gameCardContainer1.BackColor = Color.Transparent;
-            gameCardContainer1.Location = new Point(2, 3);
-            gameCardContainer1.Margin = new Padding(2, 3, 2, 3);
+            gameCardContainer1.Location = new Point(2, 2);
+            gameCardContainer1.Margin = new Padding(2, 2, 2, 2);
             gameCardContainer1.Name = "gameCardContainer1";
-            wishlist_layoutPanel.SetRowSpan(gameCardContainer1, 2);
-            gameCardContainer1.Size = new Size(806, 645);
-            gameCardContainer1.TabIndex = 2;
+            gameCardContainer1.Size = new Size(705, 484);
+            gameCardContainer1.TabIndex = 4;
             // 
             // filterMenu1
             // 
             filterMenu1.BackColor = Color.Transparent;
             filterMenu1.BackgroundImage = (Image)resources.GetObject("filterMenu1.BackgroundImage");
             filterMenu1.BackgroundImageLayout = ImageLayout.Stretch;
-            filterMenu1.Location = new Point(812, 68);
-            filterMenu1.Margin = new Padding(2, 3, 2, 3);
+            filterMenu1.Location = new Point(711, 2);
+            filterMenu1.Margin = new Padding(2, 2, 2, 2);
             filterMenu1.Name = "filterMenu1";
-            filterMenu1.Size = new Size(377, 580);
-            filterMenu1.TabIndex = 3;
+            filterMenu1.Size = new Size(327, 482);
+            filterMenu1.TabIndex = 5;
             // 
             // WishlistView
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
             Controls.Add(wishlist_layoutPanel);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "WishlistView";
-            Size = new Size(1191, 651);
+            Size = new Size(1042, 488);
             wishlist_layoutPanel.ResumeLayout(false);
             ResumeLayout(false);
         }
