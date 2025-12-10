@@ -26,6 +26,9 @@ namespace TabletopGameManagementSystem.Models
             GameIds = new List<int>();
         }
 
-        public Collection(){}
+        public Collection()
+        {
+            GameIds = new List<int>();
+        }
     }
 }

@@ -31,21 +31,26 @@
             filterLayoutPanel = new TableLayoutPanel();
             label1 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
+            numericUpDownAge = new NumericUpDown();
+            label5 = new Label();
             label2 = new Label();
+            numericUpDownPlayers = new NumericUpDown();
             label8 = new Label();
-            label6 = new Label();
-            label4 = new Label();
+            categoryCheckedListBox = new CheckedListBox();
+            reset_btn = new Button();
             label3 = new Label();
-            numericUpDown1 = new NumericUpDown();
-            numericUpDown2 = new NumericUpDown();
-            numericUpDown3 = new NumericUpDown();
-            gameTypes_select_btn = new Button();
-            categories_select_btn = new Button();
+            collectionCheckedListBox = new CheckedListBox();
+            label6 = new Label();
+            numericUpDownGameCount = new NumericUpDown();
+            label4 = new Label();
+            numericUpDownPlayTime = new NumericUpDown();
+            categories_btn = new Button();
             filterLayoutPanel.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownAge).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownPlayers).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownGameCount).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownPlayTime).BeginInit();
             SuspendLayout();
             // 
             // filterLayoutPanel
@@ -79,156 +84,214 @@
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.8828468F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.88285F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.1171532F));
-            tableLayoutPanel1.Controls.Add(categories_select_btn, 1, 4);
-            tableLayoutPanel1.Controls.Add(gameTypes_select_btn, 1, 1);
+            tableLayoutPanel1.Controls.Add(numericUpDownAge, 1, 1);
+            tableLayoutPanel1.Controls.Add(label5, 0, 1);
             tableLayoutPanel1.Controls.Add(label2, 0, 0);
-            tableLayoutPanel1.Controls.Add(label8, 0, 1);
-            tableLayoutPanel1.Controls.Add(label6, 0, 3);
-            tableLayoutPanel1.Controls.Add(label4, 0, 2);
-            tableLayoutPanel1.Controls.Add(label3, 0, 4);
-            tableLayoutPanel1.Controls.Add(numericUpDown1, 1, 2);
-            tableLayoutPanel1.Controls.Add(numericUpDown2, 1, 3);
-            tableLayoutPanel1.Controls.Add(numericUpDown3, 1, 0);
+            tableLayoutPanel1.Controls.Add(numericUpDownPlayers, 1, 0);
+            tableLayoutPanel1.Controls.Add(label8, 0, 2);
+            tableLayoutPanel1.Controls.Add(categoryCheckedListBox, 1, 2);
+            tableLayoutPanel1.Controls.Add(reset_btn, 1, 7);
+            tableLayoutPanel1.Controls.Add(label3, 0, 6);
+            tableLayoutPanel1.Controls.Add(collectionCheckedListBox, 1, 6);
+            tableLayoutPanel1.Controls.Add(label6, 0, 5);
+            tableLayoutPanel1.Controls.Add(numericUpDownGameCount, 1, 5);
+            tableLayoutPanel1.Controls.Add(label4, 0, 4);
+            tableLayoutPanel1.Controls.Add(numericUpDownPlayTime, 1, 4);
+            tableLayoutPanel1.Controls.Add(categories_btn, 1, 3);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(20, 63);
             tableLayoutPanel1.Margin = new Padding(20, 3, 20, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 5;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 20F));
+            tableLayoutPanel1.RowCount = 8;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 12.5F));
             tableLayoutPanel1.Size = new Size(239, 323);
             tableLayoutPanel1.TabIndex = 1;
+            // 
+            // numericUpDownAge
+            // 
+            numericUpDownAge.Anchor = AnchorStyles.None;
+            numericUpDownAge.BackColor = SystemColors.ControlDarkDark;
+            numericUpDownAge.BorderStyle = BorderStyle.FixedSingle;
+            numericUpDownAge.Location = new Point(127, 48);
+            numericUpDownAge.Name = "numericUpDownAge";
+            numericUpDownAge.Size = new Size(109, 23);
+            numericUpDownAge.TabIndex = 17;
+            numericUpDownAge.Value = new decimal(new int[] { 12, 0, 0, 0 });
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.Font = new Font("Calisto MT", 12F);
+            label5.ForeColor = Color.FromArgb(12, 192, 223);
+            label5.Location = new Point(3, 50);
+            label5.Name = "label5";
+            label5.Size = new Size(118, 19);
+            label5.TabIndex = 16;
+            label5.Text = "Minimum Age";
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label2.AutoSize = true;
-            label2.Font = new Font("Calisto MT", 14.25F);
+            label2.Font = new Font("Calisto MT", 12F);
             label2.ForeColor = Color.FromArgb(12, 192, 223);
-            label2.Location = new Point(3, 21);
+            label2.Location = new Point(3, 10);
             label2.Name = "label2";
-            label2.Size = new Size(118, 22);
+            label2.Size = new Size(118, 19);
             label2.TabIndex = 1;
             label2.Text = "Players";
             // 
-            // label8
+            // numericUpDownPlayers
             // 
-            label8.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label8.AutoSize = true;
-            label8.Font = new Font("Calisto MT", 14.25F);
-            label8.ForeColor = Color.FromArgb(12, 192, 223);
-            label8.Location = new Point(3, 85);
-            label8.Name = "label8";
-            label8.Size = new Size(118, 22);
-            label8.TabIndex = 7;
-            label8.Text = "Game Types";
+            numericUpDownPlayers.Anchor = AnchorStyles.None;
+            numericUpDownPlayers.BackColor = SystemColors.ControlDarkDark;
+            numericUpDownPlayers.BorderStyle = BorderStyle.FixedSingle;
+            numericUpDownPlayers.Location = new Point(127, 8);
+            numericUpDownPlayers.Name = "numericUpDownPlayers";
+            numericUpDownPlayers.Size = new Size(109, 23);
+            numericUpDownPlayers.TabIndex = 13;
+            numericUpDownPlayers.Value = new decimal(new int[] { 2, 0, 0, 0 });
             // 
-            // label6
+            // categoryCheckedListBox
             // 
-            label6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label6.AutoSize = true;
-            label6.Font = new Font("Calisto MT", 14.25F);
-            label6.ForeColor = Color.FromArgb(12, 192, 223);
-            label6.Location = new Point(3, 202);
-            label6.Name = "label6";
-            label6.Size = new Size(118, 44);
-            label6.TabIndex = 5;
-            label6.Text = "Number of Games";
+            categoryCheckedListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            categoryCheckedListBox.FormattingEnabled = true;
+            categoryCheckedListBox.Location = new Point(127, 83);
+            categoryCheckedListBox.Name = "categoryCheckedListBox";
+            categoryCheckedListBox.Size = new Size(109, 22);
+            categoryCheckedListBox.TabIndex = 18;
             // 
-            // label4
+            // reset_btn
             // 
-            label4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-            label4.AutoSize = true;
-            label4.Font = new Font("Calisto MT", 14.25F);
-            label4.ForeColor = Color.FromArgb(12, 192, 223);
-            label4.Location = new Point(3, 149);
-            label4.Name = "label4";
-            label4.Size = new Size(118, 22);
-            label4.TabIndex = 3;
-            label4.Text = "Max Time";
+            reset_btn.Anchor = AnchorStyles.None;
+            reset_btn.Location = new Point(144, 290);
+            reset_btn.Name = "reset_btn";
+            reset_btn.Size = new Size(75, 23);
+            reset_btn.TabIndex = 20;
+            reset_btn.Text = "Reset";
+            reset_btn.UseVisualStyleBackColor = true;
+            reset_btn.Click += reset_btn_Click;
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label3.AutoSize = true;
-            label3.Font = new Font("Calisto MT", 14.25F);
+            label3.Font = new Font("Calisto MT", 12F);
             label3.ForeColor = Color.FromArgb(12, 192, 223);
-            label3.Location = new Point(3, 278);
+            label3.Location = new Point(3, 250);
             label3.Name = "label3";
-            label3.Size = new Size(118, 22);
+            label3.Size = new Size(118, 19);
             label3.TabIndex = 8;
-            label3.Text = "Categories";
+            label3.Text = "Collections";
+            label3.Visible = false;
+
             // 
-            // numericUpDown1
+            // collectionCheckedListBox
             // 
-            numericUpDown1.Anchor = AnchorStyles.None;
-            numericUpDown1.BackColor = SystemColors.ControlDarkDark;
-            numericUpDown1.BorderStyle = BorderStyle.FixedSingle;
-            numericUpDown1.Location = new Point(127, 148);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(109, 23);
-            numericUpDown1.TabIndex = 11;
+            collectionCheckedListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            collectionCheckedListBox.FormattingEnabled = true;
+            collectionCheckedListBox.Location = new Point(127, 243);
+            collectionCheckedListBox.Name = "collectionCheckedListBox";
+            collectionCheckedListBox.Size = new Size(109, 22);
+            collectionCheckedListBox.TabIndex = 19;
+            collectionCheckedListBox.Visible = false;
+
             // 
-            // numericUpDown2
+            // label6
             // 
-            numericUpDown2.Anchor = AnchorStyles.None;
-            numericUpDown2.BackColor = SystemColors.ControlDarkDark;
-            numericUpDown2.BorderStyle = BorderStyle.FixedSingle;
-            numericUpDown2.Location = new Point(127, 212);
-            numericUpDown2.Name = "numericUpDown2";
-            numericUpDown2.Size = new Size(109, 23);
-            numericUpDown2.TabIndex = 12;
+            label6.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label6.AutoSize = true;
+            label6.Font = new Font("Calisto MT", 12F);
+            label6.ForeColor = Color.FromArgb(12, 192, 223);
+            label6.Location = new Point(3, 201);
+            label6.Name = "label6";
+            label6.Size = new Size(118, 38);
+            label6.TabIndex = 5;
+            label6.Text = "Number of Games";
             // 
-            // numericUpDown3
+            // numericUpDownGameCount
             // 
-            numericUpDown3.Anchor = AnchorStyles.None;
-            numericUpDown3.BackColor = SystemColors.ControlDarkDark;
-            numericUpDown3.BorderStyle = BorderStyle.FixedSingle;
-            numericUpDown3.Location = new Point(127, 20);
-            numericUpDown3.Name = "numericUpDown3";
-            numericUpDown3.Size = new Size(109, 23);
-            numericUpDown3.TabIndex = 13;
+            numericUpDownGameCount.Anchor = AnchorStyles.None;
+            numericUpDownGameCount.BackColor = SystemColors.ControlDarkDark;
+            numericUpDownGameCount.BorderStyle = BorderStyle.FixedSingle;
+            numericUpDownGameCount.Location = new Point(127, 208);
+            numericUpDownGameCount.Name = "numericUpDownGameCount";
+            numericUpDownGameCount.Size = new Size(109, 23);
+            numericUpDownGameCount.TabIndex = 12;
+            numericUpDownGameCount.Value = new decimal(new int[] { 4, 0, 0, 0 });
             // 
-            // gameTypes_select_btn
+            // label4
             // 
-            gameTypes_select_btn.Anchor = AnchorStyles.None;
-            gameTypes_select_btn.BackColor = Color.Transparent;
-            gameTypes_select_btn.BackgroundImage = Properties.Resources.grey_square;
-            gameTypes_select_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            gameTypes_select_btn.FlatAppearance.BorderSize = 0;
-            gameTypes_select_btn.FlatStyle = FlatStyle.Flat;
-            gameTypes_select_btn.Font = new Font("Broadway", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            gameTypes_select_btn.ForeColor = Color.Black;
-            gameTypes_select_btn.Location = new Point(124, 83);
-            gameTypes_select_btn.Margin = new Padding(0, 12, 0, 0);
-            gameTypes_select_btn.Name = "gameTypes_select_btn";
-            gameTypes_select_btn.Size = new Size(115, 37);
-            gameTypes_select_btn.TabIndex = 14;
-            gameTypes_select_btn.Text = "Select";
-            gameTypes_select_btn.UseVisualStyleBackColor = false;
+            label4.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label4.AutoSize = true;
+            label4.Font = new Font("Calisto MT", 12F);
+            label4.ForeColor = Color.FromArgb(12, 192, 223);
+            label4.Location = new Point(3, 170);
+            label4.Name = "label4";
+            label4.Size = new Size(118, 19);
+            label4.TabIndex = 3;
+            label4.Text = "Play Time";
             // 
-            // categories_select_btn
+            // numericUpDownPlayTime
             // 
-            categories_select_btn.Anchor = AnchorStyles.None;
-            categories_select_btn.BackColor = Color.Transparent;
-            categories_select_btn.BackgroundImage = Properties.Resources.grey_square;
-            categories_select_btn.BackgroundImageLayout = ImageLayout.Stretch;
-            categories_select_btn.FlatAppearance.BorderSize = 0;
-            categories_select_btn.FlatStyle = FlatStyle.Flat;
-            categories_select_btn.Font = new Font("Broadway", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            categories_select_btn.ForeColor = Color.Black;
-            categories_select_btn.Location = new Point(124, 277);
-            categories_select_btn.Margin = new Padding(0, 12, 0, 0);
-            categories_select_btn.Name = "categories_select_btn";
-            categories_select_btn.Size = new Size(115, 37);
-            categories_select_btn.TabIndex = 15;
-            categories_select_btn.Text = "Select";
-            categories_select_btn.UseVisualStyleBackColor = false;
+            numericUpDownPlayTime.Anchor = AnchorStyles.None;
+            numericUpDownPlayTime.BackColor = SystemColors.ControlDarkDark;
+            numericUpDownPlayTime.BorderStyle = BorderStyle.FixedSingle;
+            numericUpDownPlayTime.Location = new Point(127, 168);
+            numericUpDownPlayTime.Name = "numericUpDownPlayTime";
+            numericUpDownPlayTime.Size = new Size(109, 23);
+            numericUpDownPlayTime.TabIndex = 11;
+            numericUpDownPlayTime.Value = new decimal(new int[] { 60, 0, 0, 0 });
+            // 
+            // categories_btn
+            // 
+
+            label8.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label8.AutoSize = true;
+            label8.Font = new Font("Calisto MT", 14.25F);
+            label8.ForeColor = Color.FromArgb(12, 192, 223);
+            label8.Location = new Point(3, 121);
+            label8.Name = "label8";
+            label8.Size = new Size(118, 22);
+            label8.TabIndex = 7;
+            label8.Text = "Categories";
+            // 
+            // categoryCheckedListBox
+            // 
+            categoryCheckedListBox.FormattingEnabled = true;
+            categoryCheckedListBox.Location = new Point(127, 109);
+            categoryCheckedListBox.Name = "categoryCheckedListBox";
+            categoryCheckedListBox.Size = new Size(109, 40);
+            categoryCheckedListBox.TabIndex = 18;
+            // 
+            // collectionCheckedListBox
+            // 
+            collectionCheckedListBox.FormattingEnabled = true;
+            collectionCheckedListBox.Location = new Point(127, 268);
+            collectionCheckedListBox.Name = "collectionCheckedListBox";
+            collectionCheckedListBox.Size = new Size(109, 40);
+            collectionCheckedListBox.TabIndex = 19;
+            collectionCheckedListBox.Visible = false;
+
+            categories_btn.Anchor = AnchorStyles.None;
+            categories_btn.Location = new Point(135, 128);
+            categories_btn.Name = "categories_btn";
+            categories_btn.Size = new Size(92, 23);
+            categories_btn.TabIndex = 21;
+            categories_btn.Text = "Deselect All";
+            categories_btn.UseVisualStyleBackColor = true;
+            categories_btn.Click += categories_btn_Click;
+
             // 
             // SelectorMenu
             // 
@@ -245,9 +308,10 @@
             filterLayoutPanel.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownAge).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownPlayers).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownGameCount).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownPlayTime).EndInit();
             ResumeLayout(false);
         }
 
@@ -261,10 +325,14 @@
         private Label label2;
         private Label label8;
         private Label label3;
-        private NumericUpDown numericUpDown1;
-        private NumericUpDown numericUpDown2;
-        private NumericUpDown numericUpDown3;
-        private Button categories_select_btn;
-        private Button gameTypes_select_btn;
+        private NumericUpDown numericUpDownPlayTime;
+        private NumericUpDown numericUpDownGameCount;
+        private NumericUpDown numericUpDownPlayers;
+        private NumericUpDown numericUpDownAge;
+        private Label label5;
+        private CheckedListBox categoryCheckedListBox;
+        private CheckedListBox collectionCheckedListBox;
+        private Button reset_btn;
+        private Button categories_btn;
     }
 }

@@ -38,6 +38,7 @@
             // 
             // games_layoutPanel
             // 
+
             games_layoutPanel.BackColor = Color.Transparent;
             games_layoutPanel.ColumnCount = 2;
             games_layoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 68.04223F));
@@ -66,12 +67,14 @@
             gameCardContainer1.Size = new Size(806, 645);
             gameCardContainer1.TabIndex = 1;
             // 
+
             // filterMenu1
             // 
             filterMenu1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             filterMenu1.BackColor = Color.Transparent;
             filterMenu1.BackgroundImage = (Image)resources.GetObject("filterMenu1.BackgroundImage");
             filterMenu1.BackgroundImageLayout = ImageLayout.Stretch;
+
             filterMenu1.Location = new Point(812, 68);
             filterMenu1.Margin = new Padding(2, 3, 2, 3);
             filterMenu1.Name = "filterMenu1";
@@ -96,17 +99,20 @@
             btnAddNewGame.Text = "+ Add Game";
             btnAddNewGame.UseVisualStyleBackColor = false;
             btnAddNewGame.Click += btnAddNewGame_Click;
+
             // 
             // AllGamesView
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
+
             Controls.Add(games_layoutPanel);
             Margin = new Padding(3, 4, 3, 4);
             Name = "AllGamesView";
             Size = new Size(1191, 651);
             games_layoutPanel.ResumeLayout(false);
+
             ResumeLayout(false);
         }
 

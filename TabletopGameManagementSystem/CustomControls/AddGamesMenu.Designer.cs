@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
+            button1 = new Button();
             bodyLayoutPanel = new TableLayoutPanel();
             vScrollBar1 = new VScrollBar();
             gameCardContainer1 = new GameCardContainer();
-            button1 = new Button();
             tableLayoutPanel1.SuspendLayout();
             bodyLayoutPanel.SuspendLayout();
             SuspendLayout();
@@ -53,41 +53,6 @@
             tableLayoutPanel1.Size = new Size(764, 434);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // bodyLayoutPanel
-            // 
-            bodyLayoutPanel.ColumnCount = 2;
-            bodyLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 93.68132F));
-            bodyLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 6.31868124F));
-            bodyLayoutPanel.Controls.Add(vScrollBar1, 1, 0);
-            bodyLayoutPanel.Controls.Add(gameCardContainer1, 0, 0);
-            bodyLayoutPanel.Dock = DockStyle.Fill;
-            bodyLayoutPanel.Location = new Point(2, 2);
-            bodyLayoutPanel.Margin = new Padding(2);
-            bodyLayoutPanel.Name = "bodyLayoutPanel";
-            bodyLayoutPanel.RowCount = 1;
-            bodyLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            bodyLayoutPanel.Size = new Size(760, 353);
-            bodyLayoutPanel.TabIndex = 2;
-            // 
-            // vScrollBar1
-            // 
-            vScrollBar1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            vScrollBar1.Location = new Point(711, 35);
-            vScrollBar1.Margin = new Padding(0, 35, 0, 0);
-            vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(25, 318);
-            vScrollBar1.TabIndex = 0;
-            // 
-            // gameCardContainer1
-            // 
-            gameCardContainer1.BackColor = Color.Transparent;
-            gameCardContainer1.Dock = DockStyle.Fill;
-            gameCardContainer1.Location = new Point(2, 2);
-            gameCardContainer1.Margin = new Padding(2);
-            gameCardContainer1.Name = "gameCardContainer1";
-            gameCardContainer1.Size = new Size(707, 349);
-            gameCardContainer1.TabIndex = 1;
-            // 
             // button1
             // 
             button1.Anchor = AnchorStyles.Right;
@@ -105,6 +70,42 @@
             button1.TabIndex = 13;
             button1.Text = "Refresh";
             button1.UseVisualStyleBackColor = false;
+            // 
+            // bodyLayoutPanel
+            // 
+            bodyLayoutPanel.ColumnCount = 2;
+            bodyLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 93.68132F));
+            bodyLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 6.31868124F));
+            bodyLayoutPanel.Controls.Add(vScrollBar1, 1, 0);
+            bodyLayoutPanel.Controls.Add(gameCardContainer1, 0, 0);
+            bodyLayoutPanel.Dock = DockStyle.Fill;
+            bodyLayoutPanel.Location = new Point(2, 2);
+            bodyLayoutPanel.Margin = new Padding(2);
+            bodyLayoutPanel.Name = "bodyLayoutPanel";
+            bodyLayoutPanel.RowCount = 1;
+            bodyLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            bodyLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            bodyLayoutPanel.Size = new Size(760, 353);
+            bodyLayoutPanel.TabIndex = 2;
+            // 
+            // vScrollBar1
+            // 
+            vScrollBar1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            vScrollBar1.Location = new Point(711, 35);
+            vScrollBar1.Margin = new Padding(0, 35, 0, 0);
+            vScrollBar1.Name = "vScrollBar1";
+            vScrollBar1.Size = new Size(25, 318);
+            vScrollBar1.TabIndex = 0;
+            // 
+            // gameCardContainer1
+            // 
+            gameCardContainer1.BackColor = Color.Transparent;
+            gameCardContainer1.Dock = DockStyle.Fill;
+            gameCardContainer1.Location = new Point(2, 2);
+            gameCardContainer1.Margin = new Padding(2, 2, 2, 2);
+            gameCardContainer1.Name = "gameCardContainer1";
+            gameCardContainer1.Size = new Size(707, 349);
+            gameCardContainer1.TabIndex = 1;
             // 
             // AddGamesMenu
             // 

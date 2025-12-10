@@ -22,6 +22,9 @@ namespace TabletopGameManagementSystem
 
         public Form2()
         {
+            this.SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
+            this.UpdateStyles();
+
             InitializeComponent();
 
             _gameLibrary = new SQLGameLibrary();       // intialize the game library service

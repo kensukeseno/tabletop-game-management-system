@@ -118,25 +118,49 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="TurnTableLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TurnTableLogo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="TurnTableLogo_Sq" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\TurnTableLogo_Sq1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dk_grey_square" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dk_grey_square.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="green_square" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\green_square.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="grey_square" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\grey_square.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="record_logo_purple" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\record_logo_purple.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="green_square" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\green_square.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dk_grey_square" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dk_grey_square.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="record_logo_teal" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\record_logo_teal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TurnTableLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurnTableLogo1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="TurnTableLogo_Sq" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TurnTableLogo_Sq1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spinner1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spinner1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spinner2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spinner2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spinner3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spinner3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spinner4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spinner4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spinner5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spinner5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spinner6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spinner6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spinner7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spinner7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="spinner8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\spinner8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
