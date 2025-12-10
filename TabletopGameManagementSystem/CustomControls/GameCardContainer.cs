@@ -22,7 +22,7 @@ namespace TabletopGameManagementSystem.CustomControls
             InitializeComponent();
         }
 
-        public void LoadGames(IGameLibrary gameLibrary, List<Game> games, CardMode mode)
+        public void LoadGames(IGameLibrary gameLibrary, List<Game> games, CardMode mode, int? collectionId = null)
         {
             this.Controls.Clear();
 
@@ -30,7 +30,7 @@ namespace TabletopGameManagementSystem.CustomControls
             {
                 var card = new GameCardFull(gameLibrary); // I want GameCardFull to use the same gameLibrary instance - consistency is key
                 card.SetGame(game);
-                card.SetMode(mode);
+                card.SetMode(mode, collectionId);
                 card.Dock = DockStyle.Top;
 
                 // inline lambda keeps gameLibrary in scope

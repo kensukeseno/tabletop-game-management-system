@@ -18,6 +18,7 @@ namespace TabletopGameManagementSystem.CustomControls
         private CardMode _mode = CardMode.AllGames;
         private Game _game;
         private readonly IGameLibrary _gameLibrary;
+        private int? _collectionId; // optional collection context
 
         private static readonly Image CachedBackground = Properties.Resources.dk_grey_square; //cache background image for performance
         public event EventHandler<Game> GameRemoved; // bubble up event
@@ -48,9 +49,10 @@ namespace TabletopGameManagementSystem.CustomControls
 
         }
 
-        public void SetMode(CardMode mode)
+        public void SetMode(CardMode mode, int? collectionId = null)
         {
             _mode = mode;
+            _collectionId = collectionId; //not used here but this is where it "lands"
 
             switch (mode)
             {
@@ -72,10 +74,16 @@ namespace TabletopGameManagementSystem.CustomControls
                     btnRemove.Text = "Remove";
                     break;
 
-                case CardMode.Collection:
+                case CardMode.AddCollection:
                     cbMyShelf.Visible = false;
                     cbWishlist.Visible = false;
                     btnRemove.Text = "Add";
+                    break;
+
+                case CardMode.RemoveCollection:
+                    cbMyShelf.Visible = false;
+                    cbWishlist.Visible = false;
+                    btnRemove.Text = "Remove";
                     break;
             }
         }
@@ -139,15 +147,20 @@ namespace TabletopGameManagementSystem.CustomControls
                     GameRemoved?.Invoke(this, _game);
                     break;
 
-                case CardMode.Collection:
+                case CardMode.RemoveCollection:
+                    RemoveFromCollection();
                     GameRemoved?.Invoke(this, _game);
+                    break;
+
+                case CardMode.AddCollection:
+                    GameRemoved?.Invoke(this, _game); // selection handled by parent
                     break;
             }
 
         }
 
 
-
+        
 
         private void RemoveFromDatabase()
         {
@@ -184,7 +197,19 @@ namespace TabletopGameManagementSystem.CustomControls
             }
         }
 
+        private void RemoveFromCollection()
+        {
+            if (_collectionId == null) return;
 
+            var confirm = MessageBox.Show($"Are you sure you want to remove {_game.Name} from the collection?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                _gameLibrary.DeleteGame(_game.ID);
+                _gameLibrary.DeleteGameFromCollection(_game.ID, _collectionId.Value);
+                GameRemoved?.Invoke(this, _game);
+            }
+        }
 
     }
 }

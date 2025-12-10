@@ -28,76 +28,130 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tableLayoutPanel1 = new TableLayoutPanel();
-            collectionLabel = new Label();
-            CollectionIcon = new PictureBox();
-            tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)CollectionIcon).BeginInit();
+            btnEdit = new Button();
+            lblName = new Label();
+            lblDescription = new Label();
+            btnOpen = new Button();
+            btnDelete = new Button();
+            lblGameCount = new Label();
             SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // btnEdit
             // 
-            tableLayoutPanel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            tableLayoutPanel1.ColumnCount = 1;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 14F));
-            tableLayoutPanel1.Controls.Add(collectionLabel, 0, 1);
-            tableLayoutPanel1.Controls.Add(CollectionIcon, 0, 0);
-            tableLayoutPanel1.Location = new Point(27, 27);
-            tableLayoutPanel1.Margin = new Padding(2);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 80.51282F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 19.4871788F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 12F));
-            tableLayoutPanel1.Size = new Size(178, 164);
-            tableLayoutPanel1.TabIndex = 0;
+            btnEdit.BackColor = Color.Transparent;
+            btnEdit.BackgroundImage = Properties.Resources.grey_square;
+            btnEdit.BackgroundImageLayout = ImageLayout.Stretch;
+            btnEdit.FlatAppearance.BorderSize = 0;
+            btnEdit.FlatStyle = FlatStyle.Flat;
+            btnEdit.Font = new Font("Broadway", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnEdit.ForeColor = Color.Black;
+            btnEdit.Location = new Point(95, 184);
+            btnEdit.Margin = new Padding(0, 150, 0, 0);
+            btnEdit.Name = "btnEdit";
+            btnEdit.Size = new Size(100, 40);
+            btnEdit.TabIndex = 19;
+            btnEdit.Text = "Edit";
+            btnEdit.UseVisualStyleBackColor = false;
+            btnEdit.Click += btnEdit_Click;
             // 
-            // collectionLabel
+            // lblName
             // 
-            collectionLabel.Anchor = AnchorStyles.None;
-            collectionLabel.AutoSize = true;
-            collectionLabel.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            collectionLabel.ForeColor = SystemColors.ActiveBorder;
-            collectionLabel.Location = new Point(54, 134);
-            collectionLabel.Margin = new Padding(2, 0, 2, 0);
-            collectionLabel.Name = "collectionLabel";
-            collectionLabel.Size = new Size(70, 27);
-            collectionLabel.TabIndex = 2;
-            collectionLabel.Text = "NEW";
+            lblName.Anchor = AnchorStyles.Top;
+            lblName.AutoSize = true;
+            lblName.Font = new Font("Broadway", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblName.ForeColor = SystemColors.ActiveBorder;
+            lblName.Location = new Point(105, 0);
+            lblName.Margin = new Padding(2, 0, 2, 0);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(87, 34);
+            lblName.TabIndex = 2;
+            lblName.Text = "NEW";
             // 
-            // CollectionIcon
+            // lblDescription
             // 
-            CollectionIcon.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
-            CollectionIcon.Location = new Point(15, 2);
-            CollectionIcon.Margin = new Padding(2);
-            CollectionIcon.Name = "CollectionIcon";
-            CollectionIcon.Size = new Size(147, 128);
-            CollectionIcon.TabIndex = 1;
-            CollectionIcon.TabStop = false;
+            lblDescription.ForeColor = SystemColors.ControlLightLight;
+            lblDescription.Location = new Point(-1, 72);
+            lblDescription.Margin = new Padding(3, 20, 3, 0);
+            lblDescription.Name = "lblDescription";
+            lblDescription.Size = new Size(297, 108);
+            lblDescription.TabIndex = 3;
+            lblDescription.Text = "label1";
+            // 
+            // btnOpen
+            // 
+            btnOpen.BackColor = Color.Transparent;
+            btnOpen.BackgroundImage = Properties.Resources.grey_square;
+            btnOpen.BackgroundImageLayout = ImageLayout.Stretch;
+            btnOpen.FlatAppearance.BorderSize = 0;
+            btnOpen.FlatStyle = FlatStyle.Flat;
+            btnOpen.Font = new Font("Broadway", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnOpen.ForeColor = Color.Black;
+            btnOpen.Location = new Point(-5, 184);
+            btnOpen.Margin = new Padding(0, 150, 0, 0);
+            btnOpen.Name = "btnOpen";
+            btnOpen.Size = new Size(100, 40);
+            btnOpen.TabIndex = 20;
+            btnOpen.Text = "Open";
+            btnOpen.UseVisualStyleBackColor = false;
+            btnOpen.Click += btnOpen_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.Transparent;
+            btnDelete.BackgroundImage = Properties.Resources.grey_square;
+            btnDelete.BackgroundImageLayout = ImageLayout.Stretch;
+            btnDelete.FlatAppearance.BorderSize = 0;
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Broadway", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDelete.ForeColor = Color.Black;
+            btnDelete.Location = new Point(195, 184);
+            btnDelete.Margin = new Padding(0, 150, 0, 0);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(100, 40);
+            btnDelete.TabIndex = 21;
+            btnDelete.Text = "Remove";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // lblGameCount
+            // 
+            lblGameCount.ForeColor = SystemColors.ControlLightLight;
+            lblGameCount.Location = new Point(-1, 34);
+            lblGameCount.Margin = new Padding(3, 20, 3, 0);
+            lblGameCount.Name = "lblGameCount";
+            lblGameCount.Size = new Size(297, 30);
+            lblGameCount.TabIndex = 22;
+            lblGameCount.Text = "label1";
+            lblGameCount.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // CollectionCard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
-            BackgroundImage = Properties.Resources.dk_grey_square;
             BackgroundImageLayout = ImageLayout.Stretch;
-            Controls.Add(tableLayoutPanel1);
+            BorderStyle = BorderStyle.FixedSingle;
+            Controls.Add(lblGameCount);
+            Controls.Add(btnOpen);
+            Controls.Add(btnDelete);
+            Controls.Add(lblName);
+            Controls.Add(btnEdit);
+            Controls.Add(lblDescription);
             DoubleBuffered = true;
-            Margin = new Padding(2);
+            Margin = new Padding(10);
             Name = "CollectionCard";
-            Size = new Size(232, 212);
-            tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)CollectionIcon).EndInit();
+            Size = new Size(295, 235);
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private TableLayoutPanel tableLayoutPanel1;
-        private PictureBox CollectionIcon;
-        private Label collectionLabel;
+        private Button btnEdit;
+        private Label lblName;
+        private Button btnDelete;
+        private Button btnOpen;
+        private Label lblDescription;
+        private Label lblGameCount;
     }
 }
