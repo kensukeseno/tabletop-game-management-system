@@ -167,6 +167,7 @@
             label3.Size = new Size(118, 22);
             label3.TabIndex = 8;
             label3.Text = "Collections";
+            label3.Visible = false;
             // 
             // label6
             // 
@@ -241,6 +242,7 @@
             collectionCheckedListBox.Name = "collectionCheckedListBox";
             collectionCheckedListBox.Size = new Size(109, 40);
             collectionCheckedListBox.TabIndex = 19;
+            collectionCheckedListBox.Visible = false;
             // 
             // SelectorMenu
             // 
