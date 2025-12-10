@@ -145,7 +145,8 @@ namespace TabletopGameManagementSystem.CustomControls
                 categoryCheckedListBox.SetItemChecked(i, !anyChecked);
             }
 
-            categories_btn.Text = anyChecked ? "Select All" : "Deselect All";
+            //categories_btn.Text = anyChecked ? "Select All" : "Deselect All";
+
         }
     }
 }

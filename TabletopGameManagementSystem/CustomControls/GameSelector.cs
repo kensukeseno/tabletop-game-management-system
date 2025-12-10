@@ -8,32 +8,28 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TabletopGameManagementSystem.Models;
+using TabletopGameManagementSystem.Properties;
 using TabletopGameManagementSystem.Services;
 
 namespace TabletopGameManagementSystem.CustomControls.Views
 {
-
     public partial class GameSelector : UserControl
     {
-
-        // Stored criteria coming from SelectorMenu via SelectorView
-        private SelectorCriteria _criteria;
-   
-        private List<string> _categories = new List<string>();
-        private List<string> _collections = new List<string>();
-
-        public void SetCriteria(SelectorCriteria criteria)
-        {
-            _criteria = criteria;
-        }
-
         private IGameLibrary _library;
+        private SelectorCriteria _criteria;
 
+        private List<string> _categories = new();
+        private List<string> _collections = new();
+
+        public GameSelector() : this(null) { }
         public GameSelector(IGameLibrary library)
         {
             InitializeComponent();
+            _library = library;
+
             spin_btn.Click += spin_btn_Click;
         }
+
 
         public void Initialize(IGameLibrary library)
         {
@@ -42,32 +38,18 @@ namespace TabletopGameManagementSystem.CustomControls.Views
 
         public event EventHandler SpinButtonClicked;
 
-        private void spin_btn_Click(object sender, EventArgs e)
+        private async void spin_btn_Click(object sender, EventArgs e)
         {
-            // Raise the event so SelectorView can handle criteria collection
-            SpinButtonClicked?.Invoke(this, EventArgs.Empty);
+            ClearDisplayCards();
 
-            if (_criteria == null)
-            {
-                MessageBox.Show("Please set your filters before spinning.", "No criteria",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
+            // Reset to default background
+            selectorLayoutPanel.BackgroundImage = Properties.Resources.record_logo_purple;
 
-            var selectedGames = SelectGames(_criteria, _criteria.Categories, _criteria.SelectedCollections);
-            if (selectedGames.Count == 0)
-            {
-                MessageBox.Show("No games matched your criteria.", "No games", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            string gameList = string.Join(Environment.NewLine, selectedGames.Select(g => g.Name));
-            MessageBox.Show(gameList, "Selected Games", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            PerformSpin();
         }
 
         public void ReceiveCriteria(SelectorCriteria criteria)
         {
-            // Ensure criteria exists
             _criteria = criteria ?? new SelectorCriteria();
 
             // Ensure lists are never null
@@ -76,56 +58,102 @@ namespace TabletopGameManagementSystem.CustomControls.Views
             _categories = _criteria.Categories;
             _collections = _criteria.SelectedCollections;
 
-            // Set default numeric values if they are not provided
-            _criteria.PlayerCount ??= 0;        // 0 means any number of players
-            _criteria.AgeSuitability ??= 0;     // 0 means any age
-            _criteria.PlayingTime ??= 0;        // 0 means any playing time
-            _criteria.NumberOfGames = Math.Max(1, _criteria.NumberOfGames); // at least 1 game
+            // Numeric defaults
+            _criteria.PlayerCount ??= 0;
+            _criteria.AgeSuitability ??= 0;
+            _criteria.PlayingTime ??= 0;
+            _criteria.NumberOfGames = Math.Max(1, _criteria.NumberOfGames);
         }
 
-
-        private List<Game> SelectGames(SelectorCriteria criteria, List<string> categories, List<string> collections)
+        private void PerformSpin()
         {
-            if (criteria == null) return new List<Game>();
+            SpinButtonClicked?.Invoke(this, EventArgs.Empty);
 
-            var allGames = _library.GetAllGames() ?? new List<Game>();
+            if (_criteria == null)
+            {
+                MessageBox.Show("Please set your filters before spinning.",
+                    "No criteria", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
-            // Start with owned games
-            //var filtered = allGames.Where(g => g.IsOwned).ToList();
-            
-            //temp for testing --> remove when owned games are stored
-            var filtered = allGames.ToList();
+            var selectedGames = SelectGames(
+                _criteria,
+                _criteria.Categories,
+                _criteria.SelectedCollections
+            );
 
-            // Player count filter (0 means any)
+            if (selectedGames.Count == 0)
+            {
+                MessageBox.Show("No games matched your criteria.",
+                    "No games", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DisplaySpinResults(selectedGames);
+        }
+
+        private void ClearDisplayCards()
+        {
+            foreach (Control ctrl in spinCardPanel.Controls.Cast<Control>().ToList())
+            {
+                if (ctrl != spin_btn)
+                {
+                    spinCardPanel.Controls.Remove(ctrl);
+                    ctrl.Dispose();
+                }
+            }
+        }
+
+        private List<Game> SelectGames(
+            SelectorCriteria criteria,
+            List<string> categories,
+            List<string> collections)
+        {
+            if (criteria == null)
+                return new List<Game>();
+
+            //var allGames = _library.GetAllGames() ?? new List<Game>(); //for testing
+            //var filtered = allGames.ToList(); //used for testing
+
+            var filter = new FilterCriteria
+            {
+                IsOwned = true
+            };
+            var filtered = _library.FindGames(filter) ?? new List<Game>();
+           
+
+            // Player count
             if (criteria.PlayerCount > 0)
-            {
-                filtered = filtered.Where(g => g.MinPlayers <= criteria.PlayerCount && g.MaxPlayers >= criteria.PlayerCount).ToList();
-            }
+                filtered = filtered.Where(g =>
+                    g.MinPlayers <= criteria.PlayerCount &&
+                    g.MaxPlayers >= criteria.PlayerCount).ToList();
 
-            // Playing time filter (0 means any)
+            // Playing time
             if (criteria.PlayingTime > 0)
-            {
-                filtered = filtered.Where(g => g.PlayingTime <= criteria.PlayingTime).ToList();
-            }
+                filtered = filtered.Where(g =>
+                    g.PlayingTime <= criteria.PlayingTime).ToList();
 
-            // Age suitability filter (0 means any)
+            // Age suitability
             if (criteria.AgeSuitability > 0)
-            {
-                filtered = filtered.Where(g => g.AgeSuitability <= criteria.AgeSuitability).ToList();
-            }
+                filtered = filtered.Where(g =>
+                    g.AgeSuitability <= criteria.AgeSuitability).ToList();
 
-            // Filter by categories if any selected
-            if (categories != null && categories.Count > 0)
-            {
-                filtered = filtered.Where(g => g.Categories != null && g.Categories.Any(c => categories.Contains(c))).ToList();
-            }
+            // Categories
+            if (categories?.Count > 0)
+                filtered = filtered.Where(g =>
+                    g.Categories != null &&
+                    g.Categories.Any(c => categories.Contains(c))
+                ).ToList();
 
-            // Filter by collections if any selected
-            if (collections != null && collections.Count > 0)
+            // Collections
+            if (collections?.Count > 0)
             {
                 var allCollections = _library.GetAllCollections() ?? new List<Collection>();
                 filtered = filtered.Where(g =>
-                    allCollections.Any(col => collections.Contains(col.Name) && (col.GameIds?.Contains(g.ID) ?? false))
+                    allCollections.Any(col =>
+                        collections.Contains(col.Name) &&
+                        (col.GameIds?.Contains(g.ID) ?? false)
+                    )
                 ).ToList();
             }
 
@@ -134,16 +162,56 @@ namespace TabletopGameManagementSystem.CustomControls.Views
             for (int i = filtered.Count - 1; i > 0; i--)
             {
                 int j = rng.Next(i + 1);
-                var temp = filtered[i];
-                filtered[i] = filtered[j];
-                filtered[j] = temp;
+                (filtered[i], filtered[j]) = (filtered[j], filtered[i]);
             }
 
-            // Pick the requested number of games (at least 1)
-            int take = Math.Max(1, criteria.NumberOfGames);
-            return filtered.Take(take).ToList();
+            return filtered.Take(Math.Max(1, criteria.NumberOfGames)).ToList();
         }
 
+        private void DisplaySpinResults(List<Game> selectedGames)
+        {
+            // Remove layout background
+            selectorLayoutPanel.BackgroundImage = null;
 
+            // Change to spin again mode
+            spin_btn.Text = "Spin Again";
+
+            // Max 8 cards
+            var gamesToShow = selectedGames.Take(8).ToList();
+
+            // Clear old cards, keep center button
+            foreach (Control ctrl in spinCardPanel.Controls.Cast<Control>().ToList())
+            {
+                if (ctrl != spin_btn)
+                {
+                    spinCardPanel.Controls.Remove(ctrl);
+                    ctrl.Dispose();
+                }
+            }
+
+            spinCardPanel.Controls.Add(spin_btn, 1, 1);
+
+            int gameIndex = 0;
+
+            for (int row = 0; row < spinCardPanel.RowCount; row++)
+            {
+                for (int col = 0; col < spinCardPanel.ColumnCount; col++)
+                {
+                    if (row == 1 && col == 1) continue;
+
+                    if (gameIndex >= gamesToShow.Count)
+                        return;
+
+                    var game = gamesToShow[gameIndex++];
+                    var card = new SpinCard();
+
+                    card.SetGame(game);
+                    card.Dock = DockStyle.Fill;
+                    card.Margin = new Padding(5);
+
+                    spinCardPanel.Controls.Add(card, col, row);
+                }
+            }
+        }
     }
 }
