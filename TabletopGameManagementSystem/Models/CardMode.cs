@@ -3,5 +3,6 @@
     AllGames,
     MyShelf,
     Wishlist,
-    Collection
+    AddCollection,
+    RemoveCollection
 }

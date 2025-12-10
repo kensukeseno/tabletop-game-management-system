@@ -69,8 +69,11 @@ namespace TabletopGameManagementSystem.CustomControls
 
         private void CollectionContainer_CollectionOpened(object sender, Collection collection)
         {
-            // TODO: Show games inside this collection
-            MessageBox.Show($"Open collection: {collection.Name}", "Collection Opened");
+            using (var form = new CollectionDetailsForm(collection, _gameLibrary))
+            {
+                form.ShowDialog();   // blocks until the modal is closed
+            }
+
         }
 
         private void CollectionContainer_CollectionDeleted(object sender, Collection collection)
