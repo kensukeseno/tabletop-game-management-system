@@ -33,17 +33,17 @@ namespace TabletopGameManagementSystem.CustomControls
             }
 
             // Set default numeric values
-            numericUpDownPlayers.Value = 1;
+            numericUpDownPlayers.Value = 2;
             numericUpDownAge.Value = 12;
             numericUpDownPlayTime.Value = 60;
-            numericUpDownGameCount.Value = 4;
+            numericUpDownGameCount.Value = 8;
 
             // Pre-select all categories
             for (int i = 0; i < categoryCheckedListBox.Items.Count; i++)
             {
                 categoryCheckedListBox.SetItemChecked(i, true);
             }
-  
+
         }
 
         // Event fired when user presses the spin button
@@ -51,7 +51,7 @@ namespace TabletopGameManagementSystem.CustomControls
 
         public void CollectCriteriaAndRaiseEvent()
         {
-            var criteria = BuildCriteria(); 
+            var criteria = BuildCriteria();
             OnCriteriaCollected?.Invoke(criteria);
         }
 
@@ -72,7 +72,6 @@ namespace TabletopGameManagementSystem.CustomControls
                 Categories = GetSelectedCategories(),
                 SelectedCollections = GetSelectedCollections(),
 
-                //OwnedOnly = true //temporarily ignore until myShelf is implimented
             };
         }
 
@@ -107,6 +106,46 @@ namespace TabletopGameManagementSystem.CustomControls
             for (int i = 0; i < categoryCheckedListBox.Items.Count; i++)
                 categoryCheckedListBox.SetItemChecked(i, true);
 
+        }
+
+        public void ResetToDefaults()
+        {
+            // Reset default numeric values
+            numericUpDownPlayers.Value = 1;
+            numericUpDownAge.Value = 12;
+            numericUpDownPlayTime.Value = 60;
+            numericUpDownGameCount.Value = 4;
+
+            for (int i = 0; i < categoryCheckedListBox.Items?.Count; i++)
+            {
+                categoryCheckedListBox.SetItemChecked(i, true);
+            }
+        }
+
+        public void DeselectAllCategories()
+        {
+            for (int i = 0; i < categoryCheckedListBox.Items.Count; i++)
+            {
+                categoryCheckedListBox.SetItemChecked(i, false);
+            }
+        }
+
+
+        private void reset_btn_Click(object sender, EventArgs e)
+        {
+            ResetToDefaults();
+        }
+
+        private void categories_btn_Click(object sender, EventArgs e)
+        {
+            bool anyChecked = categoryCheckedListBox.CheckedItems.Count > 0;
+
+            for (int i = 0; i < categoryCheckedListBox.Items.Count; i++)
+            {
+                categoryCheckedListBox.SetItemChecked(i, !anyChecked);
+            }
+
+            categories_btn.Text = anyChecked ? "Select All" : "Deselect All";
         }
     }
 }

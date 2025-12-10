@@ -55,12 +55,13 @@
             gameCard_panel.Controls.Add(btnRemove, 0, 1);
             gameCard_panel.Dock = DockStyle.Fill;
             gameCard_panel.Location = new Point(0, 0);
+            gameCard_panel.Margin = new Padding(3, 2, 3, 2);
             gameCard_panel.Name = "gameCard_panel";
             gameCard_panel.RowCount = 2;
             gameCard_panel.RowStyles.Add(new RowStyle());
             gameCard_panel.RowStyles.Add(new RowStyle());
-            gameCard_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            gameCard_panel.Size = new Size(808, 404);
+            gameCard_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            gameCard_panel.Size = new Size(707, 303);
             gameCard_panel.TabIndex = 0;
             // 
             // gamedetails_panel
@@ -70,17 +71,17 @@
             gamedetails_panel.Controls.Add(lblGameTitle, 0, 0);
             gamedetails_panel.Controls.Add(innerGamedetailsPanel, 0, 1);
             gamedetails_panel.Dock = DockStyle.Fill;
-            gamedetails_panel.Location = new Point(268, 29);
-            gamedetails_panel.Margin = new Padding(3, 29, 3, 3);
+            gamedetails_panel.Location = new Point(234, 22);
+            gamedetails_panel.Margin = new Padding(3, 22, 3, 2);
             gamedetails_panel.Name = "gamedetails_panel";
             gamedetails_panel.RowCount = 2;
             gameCard_panel.SetRowSpan(gamedetails_panel, 2);
-            gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 51F));
+            gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 38F));
             gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            gamedetails_panel.Size = new Size(537, 372);
+            gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            gamedetails_panel.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            gamedetails_panel.Size = new Size(470, 279);
             gamedetails_panel.TabIndex = 1;
             // 
             // lblGameTitle
@@ -89,10 +90,10 @@
             lblGameTitle.AutoSize = true;
             lblGameTitle.Font = new Font("Broadway", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblGameTitle.ForeColor = SystemColors.ActiveBorder;
-            lblGameTitle.Location = new Point(194, 12);
-            lblGameTitle.MaximumSize = new Size(500, 0);
+            lblGameTitle.Location = new Point(174, 8);
+            lblGameTitle.MaximumSize = new Size(438, 0);
             lblGameTitle.Name = "lblGameTitle";
-            lblGameTitle.Size = new Size(148, 26);
+            lblGameTitle.Size = new Size(121, 21);
             lblGameTitle.TabIndex = 0;
             lblGameTitle.Text = "Game Title";
             lblGameTitle.TextAlign = ContentAlignment.MiddleCenter;
@@ -105,8 +106,8 @@
             innerGamedetailsPanel.Controls.Add(label3, 1, 0);
             innerGamedetailsPanel.Controls.Add(label2, 0, 0);
             innerGamedetailsPanel.Dock = DockStyle.Fill;
-            innerGamedetailsPanel.Location = new Point(3, 54);
-            innerGamedetailsPanel.Margin = new Padding(3, 3, 20, 3);
+            innerGamedetailsPanel.Location = new Point(3, 40);
+            innerGamedetailsPanel.Margin = new Padding(3, 2, 18, 2);
             innerGamedetailsPanel.Name = "innerGamedetailsPanel";
             innerGamedetailsPanel.RowCount = 6;
             innerGamedetailsPanel.RowStyles.Add(new RowStyle());
@@ -115,7 +116,7 @@
             innerGamedetailsPanel.RowStyles.Add(new RowStyle());
             innerGamedetailsPanel.RowStyles.Add(new RowStyle());
             innerGamedetailsPanel.RowStyles.Add(new RowStyle());
-            innerGamedetailsPanel.Size = new Size(514, 315);
+            innerGamedetailsPanel.Size = new Size(449, 237);
             innerGamedetailsPanel.TabIndex = 1;
             // 
             // label3
@@ -124,9 +125,9 @@
             label3.AutoSize = true;
             label3.Font = new Font("Calisto MT", 14.25F);
             label3.ForeColor = SystemColors.ActiveBorder;
-            label3.Location = new Point(302, 0);
+            label3.Location = new Point(267, 0);
             label3.Name = "label3";
-            label3.Size = new Size(63, 28);
+            label3.Size = new Size(49, 22);
             label3.TabIndex = 3;
             label3.Text = "Data";
             // 
@@ -136,9 +137,9 @@
             label2.AutoSize = true;
             label2.Font = new Font("Calisto MT", 14.25F);
             label2.ForeColor = SystemColors.ActiveBorder;
-            label2.Location = new Point(27, 0);
+            label2.Location = new Point(28, 0);
             label2.Name = "label2";
-            label2.Size = new Size(99, 28);
+            label2.Size = new Size(77, 22);
             label2.TabIndex = 2;
             label2.Text = "Heading";
             // 
@@ -153,16 +154,15 @@
             tableLayoutPanel1.Controls.Add(cbFavorite, 0, 2);
             tableLayoutPanel1.Controls.Add(cbWishlist, 0, 1);
             tableLayoutPanel1.Controls.Add(cbMyShelf, 0, 0);
-            tableLayoutPanel1.Location = new Point(19, 4);
-            tableLayoutPanel1.Margin = new Padding(3, 4, 3, 4);
+            tableLayoutPanel1.Location = new Point(16, 3);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.Padding = new Padding(0, 30, 0, 30);
+            tableLayoutPanel1.Padding = new Padding(0, 22, 0, 22);
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
             tableLayoutPanel1.RowStyles.Add(new RowStyle());
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel1.Size = new Size(226, 156);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 15F));
+            tableLayoutPanel1.Size = new Size(198, 117);
             tableLayoutPanel1.TabIndex = 2;
             // 
             // cbFavorite
@@ -170,10 +170,9 @@
             cbFavorite.Anchor = AnchorStyles.None;
             cbFavorite.AutoSize = true;
             cbFavorite.Font = new Font("Broadway", 14.25F);
-            cbFavorite.Location = new Point(42, 112);
-            cbFavorite.Margin = new Padding(3, 4, 3, 4);
+            cbFavorite.Location = new Point(42, 87);
             cbFavorite.Name = "cbFavorite";
-            cbFavorite.Size = new Size(142, 31);
+            cbFavorite.Size = new Size(113, 25);
             cbFavorite.TabIndex = 3;
             cbFavorite.Text = "Favorite";
             cbFavorite.UseVisualStyleBackColor = true;
@@ -184,10 +183,9 @@
             cbWishlist.Anchor = AnchorStyles.None;
             cbWishlist.AutoSize = true;
             cbWishlist.Font = new Font("Broadway", 14.25F);
-            cbWishlist.Location = new Point(44, 73);
-            cbWishlist.Margin = new Padding(3, 4, 3, 4);
+            cbWishlist.Location = new Point(44, 56);
             cbWishlist.Name = "cbWishlist";
-            cbWishlist.Size = new Size(137, 31);
+            cbWishlist.Size = new Size(109, 25);
             cbWishlist.TabIndex = 1;
             cbWishlist.Text = "Wishlist";
             cbWishlist.UseVisualStyleBackColor = true;
@@ -198,10 +196,9 @@
             cbMyShelf.Anchor = AnchorStyles.None;
             cbMyShelf.AutoSize = true;
             cbMyShelf.Font = new Font("Broadway", 14.25F);
-            cbMyShelf.Location = new Point(45, 34);
-            cbMyShelf.Margin = new Padding(3, 4, 3, 4);
+            cbMyShelf.Location = new Point(45, 25);
             cbMyShelf.Name = "cbMyShelf";
-            cbMyShelf.Size = new Size(135, 31);
+            cbMyShelf.Size = new Size(108, 25);
             cbMyShelf.TabIndex = 0;
             cbMyShelf.Text = "MyShelf";
             cbMyShelf.UseVisualStyleBackColor = true;
@@ -218,10 +215,10 @@
             btnRemove.FlatStyle = FlatStyle.Flat;
             btnRemove.Font = new Font("Broadway", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnRemove.ForeColor = Color.Black;
-            btnRemove.Location = new Point(67, 340);
-            btnRemove.Margin = new Padding(0, 150, 0, 0);
+            btnRemove.Location = new Point(58, 253);
+            btnRemove.Margin = new Padding(0, 112, 0, 0);
             btnRemove.Name = "btnRemove";
-            btnRemove.Size = new Size(131, 37);
+            btnRemove.Size = new Size(115, 31);
             btnRemove.TabIndex = 16;
             btnRemove.Text = "Remove";
             btnRemove.TextAlign = ContentAlignment.BottomCenter;
@@ -230,15 +227,16 @@
             // 
             // GameCardFull
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Transparent;
             BackgroundImage = Properties.Resources.dk_grey_square;
             BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(gameCard_panel);
             DoubleBuffered = true;
+            Margin = new Padding(3, 2, 3, 2);
             Name = "GameCardFull";
-            Size = new Size(808, 404);
+            Size = new Size(707, 303);
             gameCard_panel.ResumeLayout(false);
             gameCard_panel.PerformLayout();
             gamedetails_panel.ResumeLayout(false);
